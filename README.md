@@ -2,7 +2,7 @@
 
 # About Odamaki
 
-A WordPress theme for (yokkin.com)[yokkin.com]
+A WordPress theme for [yokkin.com](yokkin.com)
 Under development since January 2021
 
 # Update Log
