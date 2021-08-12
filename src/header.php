@@ -10,7 +10,7 @@
 endif; ?>
 <meta name="theme-color" content="#2d4059">
 <!-- CSS -->
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1154">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1155">
 <!-- Webfont -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono&family=Work+Sans&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
