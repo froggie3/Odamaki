@@ -11,5 +11,5 @@ Under development since January 2021
 
 | Date       | Content                       |
 |:-----------|:------------------------------|
-| 2021/01/?? | Development started           |
+| 2021/01/24 | Development started           |
 | 2021/08/12 | Initial commit to Github      |

@@ -1064,6 +1064,11 @@ ul.tags-wrapper {
   line-height: 2;
   margin: 0;
   padding: 2px 8px;
+  transition: .1s;
+}
+
+.tag a:hover {
+  border: 1px solid #a2a2a2;
 }
 
 a.entry-content-link:hover {
