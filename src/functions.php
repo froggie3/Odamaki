@@ -1,70 +1,13 @@
 <?php
+// メニュー追加
+
 register_nav_menus( array(
 	'header_menu' => 'Header Menu',
 	'footer_menu' => 'Footer Menu',
 	'social_links' => 'Social Links'
 ) );
 
-/**
- * Register our sidebars and widgetized areas.
- *
- */
-
-function right_widgets_1_init()
-{
-    register_sidebar(array(
-        'name' => '右サイドバー (投稿一覧用)',
-        'id' => 'blog_right_1',
-        'before_widget' => '<section class="grid-full no-pd sidebar">',
-        'after_widget' => '</section>',
-        'before_title' => '<div class="content-title-wrapper"><h2 class="content-title">',
-        'after_title' => '</h2></div>',
-    ));
-}
-
-add_action('widgets_init', 'right_widgets_1_init');
-
-function right_widgets_2_init()
-{
-    register_sidebar(array(
-        'name' => '右サイドバー (Blog用)',
-        'id' => 'blog_right_2',
-        'before_widget' => '<section class="grid-full no-pd sidebar">',
-        'after_widget' => '</section>',
-        'before_title' => '<div class="content-title-wrapper"><h2 class="content-title">',
-        'after_title' => '</h2></div>',
-    ));
-}
-
-add_action('widgets_init', 'right_widgets_2_init');
-
-function right_widgets_3_init()
-{
-    register_sidebar(array(
-        'name' => 'フロントページサイドバー',
-        'id' => 'blog_right_3_front_page',
-        'before_widget' => '<section class="grid-full no-pd sidebar">',
-        'after_widget' => '</section>',
-        'before_title' => '<div class="content-title-wrapper"><h2 class="content-title">',
-        'after_title' => '</h2></div>',
-    ));
-}
-
-add_action('widgets_init', 'right_widgets_3_init');
-
-function right_widgets_4_init()
-{
-    register_sidebar(array(
-        'name' => '固定ページサイドバー',
-        'id' => 'blog_right_page',
-        'before_widget' => '<section class="grid-full no-pd sidebar">',
-        'after_widget' => '</section>',
-        'before_title' => '<div class="content-title-wrapper"><h2 class="content-title">',
-        'after_title' => '</h2></div>',
-    ));
-}
-
-add_action('widgets_init', 'right_widgets_4_init');
+// ウィジェット追加
 
 function footer_widget_init()
 {
@@ -95,6 +38,9 @@ add_theme_support( 'custom-header', array(
 	'admin-preview-callback' => '',
 ) );
 
+// アイキャッチ画像のサポートを有効化
 add_theme_support('post-thumbnails');
+
+// ブロックエディタのスタイル指定を有効化
 add_theme_support('editor-styles');
 add_editor_style('style-editor.css');

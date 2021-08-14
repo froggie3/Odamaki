@@ -65,6 +65,10 @@ a {
   cursor: pointer;
 }
 
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
 
 /*
 /* Navigation stuff
@@ -424,7 +428,9 @@ tr td strong {
   font-weight: bold;
 }
 
-
+.is-style-stripes {
+  border-bottom: 0px solid #f0f0f0 !important;
+}
 
 
 .table-wrap {
