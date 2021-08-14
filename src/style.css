@@ -163,7 +163,6 @@ sup {
   color: #fff;
   text-shadow: 0px 0px 3px rgb(0 0 0 / 30%);
   padding: 4rem 1rem;
-  line-height: 2;
   height: 100%;
   flex-direction: column;
   place-items: center;
@@ -173,11 +172,11 @@ sup {
 .page-title {
   font-size: 1.5em;
   font-weight: normal;
-  margin: 0 0 1em 0;
 }
 
 .page-info {
   font-size: .9em;
+  padding: 2rem 0 0 0;
 }
 
 ul.page-metadata {
@@ -189,19 +188,10 @@ ul.page-metadata li i {
 }
 
 ul.page-metadata li {
-  margin: 0 6px;
+  margin: 0 6px 0 0;
   display: inline-block;
 }
 
-.page-metadata a:hover {
-  background-color: #766264;
-  color: #f3f3f3;
-}
-
-.page-metadata a {
-  color: #f3f3f3;
-  background: none;
-}
 
 
 /*
@@ -681,30 +671,32 @@ li::marker {
 .content-above {
   padding: 2rem 0 0rem;
   margin: 0 auto;
-  max-width: 1140px;
+  max-width: 768px;
 }
 
 .content-bottom {
   margin: 3rem 0 2rem;
 }
 
+.post-thumbnail-wrap {
+  padding: 0rem 0 0.8rem 0;
+}
+
 ul.post-metadata-top {
   font-size: 0.8em;
-  padding: 0;
-  /* border-bottom: 1px solid #ddd; */
+  padding: 0 0 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.post-metadata-top li, .post-metadata-bottom li {
-  list-style: none;
-}
-
 ul.post-metadata-bottom {
   font-size: .8em;
-  padding: 2em 0;
-  border-top: 1px solid #ddd;
+  padding: 0em 0;
+}
+
+.post-metadata-top li, .post-metadata-bottom li {
+  list-style: none;
 }
 
 .in-line-picture-middle {
