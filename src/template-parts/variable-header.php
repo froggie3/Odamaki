@@ -22,20 +22,20 @@
         </h1>
 
         <?php if (is_single()):  // 投稿か判定 ?>
-        <?php elseif (is_page()): ?>
         <?php else: ?>
             <div class="page-info"><?php    // ヘッダーの概要欄
                 $d = array(
-                    "<p>インターネット上にて活動する音屋、“Yokkin”のWebサイトです。</p>",
-                    "<p>お知らせや身辺のことを綴っています。</p>",
+                    "",
+                    "お知らせや身辺のことを綴っています。",
                     "404" => "<p>ページが見つかりませんでした。</p>"
                 );
 
-                if (is_front_page())    // トップページの処理
-                    echo $d[0];
+                if (is_page())    // 固定ページの処理
+                    echo get_the_excerpt();
 
                 if (is_home())    // ブログページの処理
                     echo $d[1];
+                    // なぜかブログ一覧のページだけ要約が表示できない
 
                 if (is_archive()) {    // その他のページの処理
                     $description = term_description();

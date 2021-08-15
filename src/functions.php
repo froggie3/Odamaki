@@ -1,4 +1,15 @@
 <?php
+
+
+// タイトルとかなんやかんや
+add_theme_support( 'title-tag' );
+if (is_front_page()) {
+	apply_filters( 'document_title_parts', $tagline );
+}
+
+
+
+
 // メニュー追加
 
 register_nav_menus( array(
@@ -44,3 +55,6 @@ add_theme_support('post-thumbnails');
 // ブロックエディタのスタイル指定を有効化
 add_theme_support('editor-styles');
 add_editor_style('style-editor.css');
+
+// 固定ページで抜粋を使えるようにする
+add_post_type_support('page', 'excerpt');
