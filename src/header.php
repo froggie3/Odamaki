@@ -12,7 +12,7 @@
 
 <!-- Stylesheets -->
 <meta name="theme-color" content="#2d4059">
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1157">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1158">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -37,8 +37,7 @@
 <?php endif; ?>
 </head>
 
-<body id="top">
-<div class="wrap">
+<body>
 
 <?php get_template_part('template-parts/navigation'); ?> <!-- ナビゲーションメニュー -->
 <?php get_template_part('template-parts/variable-header'); ?> <!-- ヘッダ -->

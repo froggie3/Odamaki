@@ -13,11 +13,25 @@
 
         <?php
         wp_nav_menu( array(
-            'menu' => 'header_menu',
-            'menu_class' => 'navigation-link-child',
-            'menu_id' => '',
-            'container' => 'nav',
-            'container_class' => 'navigation-link-parent',
-        ) ); ?>
+            'menu'                 => '',
+            'menu_class'           => '',
+            'menu_id'              => '',
+            'container'            => 'nav',
+            'container_class'      => 'navigation-menu-container',
+            'container_id'         => '',
+            'container_aria_label' => '',
+            'echo'                 => true,
+            'fallback_cb'          => 'wp_page_menu',
+            'before'               => '',
+            'after'                => '',
+            'link_before'          => '',
+            'link_after'           => '',
+            'items_wrap'           => '<ul>%3$s</ul>',
+            'item_spacing'         => 'preserve',
+            'depth'                => 0,
+            'walker'               => '',
+            'theme_location'       => 'header_menu',
+        ) );
+        ?>
     </div>
 </header>

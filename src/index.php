@@ -14,6 +14,4 @@
 		<p>ここにはなにもないよ</p>
 		<?php endif; ?>
 	</main>
-</div>
-
 <?php get_footer();

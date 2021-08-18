@@ -8,17 +8,31 @@
 			</div>
 		</div>
 		<div class="footer-below">
-			<div class="copyright copyright-item">
+			<div class="copyright">
 				<small class="copyright-name">&copy; Yokkin</small>
 			</div>
 			<?php
 			wp_nav_menu( array(
-				'menu' => 'footer_menu',
-				'menu_class' => 'footer-menu copyright-item',
-				'menu_id' => '',
-				'container'       => '',
-				'container_class' => '',
-			)); ?>
+				'menu'                 => '',
+				'menu_class'           => '',
+				'menu_id'              => '',
+				'container'            => 'nav',
+				'container_class'      => 'footer-menu-container',
+				'container_id'         => '',
+				'container_aria_label' => '',
+				'echo'                 => true,
+				'fallback_cb'          => 'wp_page_menu',
+				'before'               => '',
+				'after'                => '',
+				'link_before'          => '',
+				'link_after'           => '',
+				'items_wrap'           => '<ul>%3$s</ul>',
+				'item_spacing'         => 'preserve',
+				'depth'                => 0,
+				'walker'               => '',
+				'theme_location'       => 'footer_menu',
+			) );
+			?>
 		</div>
 </footer>
 
