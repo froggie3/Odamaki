@@ -7,6 +7,11 @@ A WordPress theme for [https://yokkin.com/](https://yokkin.com/)
 Under development since January 2021
 
 
+# Installation
+
+(To be written)
+
+
 # Update Log
 
 | Date       | Content                       |

@@ -54,10 +54,14 @@ samp {
 p strong,
 ul strong,
 ol strong {
-    background: linear-gradient(0deg, hsl(25deg 100% 50% / 50%), hsl(25deg 100% 50% / 50%)) no-repeat;
+    font-weight: bold;
+    background: linear-gradient(
+      0deg
+      , #fce100, #fce100) no-repeat;
     background-size: 100% 33%;
     background-position: bottom;
-}
+  }
+  
 
 p a {
     color: #175199;
@@ -88,4 +92,12 @@ thead > tr > th {
 
 tr td strong {
     font-weight: bold;
+}
+
+
+.wp-block-image figcaption {
+  color: #555;
+  font-size: 0.8em;
+  line-height: 2;
+  text-align: center;
 }
