@@ -12,74 +12,31 @@
         <div class="menu-social_links-container">
             <ul id="followmelink" class="menu">
                 <li class="social-icon soundcloud">
-                    <a href="https://soundcloud.com/yokkin">
-                        <img src="https://yokkin.com/wp-content/themes/mytheme/files/img/social-icons/soundcloud.svg"
-                        width="32"
-                        height="32"
-                        alt="SoundCloud"
-                        title="SoundCloud"
-                        />
+                    <a href="https://soundcloud.com/yokkin" title="SoundCloud">
                     </a>
                 </li>
                 <li class="social-icon youtube">
-                    <a href="https://www.youtube.com/c/yokkin11012">
-                        <img src="https://yokkin.com/wp-content/themes/mytheme/files/img/social-icons/youtube.svg"
-                        width="32"
-                        height="32"
-                        alt="YouTube"
-                        title="YouTube"
-                        />
+                    <a href="https://www.youtube.com/c/yokkin11012" title="YouTube">
                     </a>
                 </li>
                 <li class="social-icon twitter">
-                    <a href="https://twitter.com/froggie3_">
-                        <img src="https://yokkin.com/wp-content/themes/mytheme/files/img/social-icons/twitter.svg"
-                        width="32"
-                        height="32"
-                        alt="Twitter"
-                        title="Twitter"
-                        />
+                    <a href="https://twitter.com/froggie3_" title="Twitter">
                     </a>
                 </li>
                 <li class="social-icon skeb">
-                    <a href="https://skeb.jp/@froggie3_">
-                        <img src="https://yokkin.com/wp-content/themes/mytheme/files/img/social-icons/skeb.svg"
-                        width="32"
-                        height="32"
-                        alt="Skeb"
-                        title="Skeb"
-                        />
+                    <a href="https://skeb.jp/@froggie3_" title="Skeb">
                     </a>
                 </li>
                 <li class="social-icon discord">
-                    <a href="https://twitter.com/froggie3_/status/1261231825558503430">
-                        <img src="https://yokkin.com/wp-content/themes/mytheme/files/img/social-icons/discord.svg"
-                        width="32"
-                        height="32"
-                        alt="Discord Server"
-                        title="Discord Server"
-                        />
+                    <a href="https://twitter.com/froggie3_/status/1261231825558503430" title="Discord Server">
                     </a>
                 </li>
                 <li class="social-icon github">
-                    <a href="https://github.com/froggie3">
-                        <img src="https://yokkin.com/wp-content/themes/mytheme/files/img/social-icons/github.svg"
-                        width="32"
-                        height="32"
-                        alt="GitHub"
-                        title="GitHub"
-                        />
+                    <a href="https://github.com/froggie3" title="GitHub">
                     </a>
                 </li>
                 <li class="social-icon sanctunes">
-                    <a href="https://sanctunes.com/">
-                        <img src="https://yokkin.com/wp-content/themes/mytheme/files/img/social-icons/sanctunes.svg"
-                        class="sanctunes-img"
-                        width="32"
-                        height="32"
-                        alt="sanctunes"
-                        title="sanctunes"
-                        />
+                    <a href="https://sanctunes.com/" title="sanctunes">
                     </a>
                 </li>
             </ul>
@@ -107,10 +64,10 @@
 
         <ul class="irai-button-wrap">
             <li class="irai-button">
-                <a href="https://yokkin.com/commission" title="作曲依頼についての詳細">作曲依頼の詳細</a>
+                <a href="<?php echo esc_url(home_url()); ?>/commission" title="作曲依頼についての詳細">作曲依頼の詳細</a>
             </li>
             <li class="irai-button">
-                <a href="https://yokkin.com/mixing" title="ミックス依頼についての詳細">ミックス依頼の詳細</a>
+                <a href="<?php echo esc_url(home_url()); ?>/mixing" title="ミックス依頼についての詳細">ミックス依頼の詳細</a>
             </li>
         </ul>
     </div>

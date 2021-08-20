@@ -12,7 +12,7 @@
 
 <!-- Stylesheets -->
 <meta name="theme-color" content="#2d4059">
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.min.css?ver=1163">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.min.css?ver=1165">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
