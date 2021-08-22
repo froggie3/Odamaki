@@ -1,19 +1,5 @@
 <div class="content-above">
-    <?php
-    if (has_post_thumbnail()):  // アイキャッチ画像 ?>
-        <div class="post-thumbnail-wrap">
-        <?php
-        the_post_thumbnail(
-            'full',
-            array(
-                'class' => 'post-thumbnail'
-                )
-        );
-        ?>
-        </div>
-    <?php else: ?><!-- アイキャッチ画像がない時の処理  -->
-        <!-- なにもしない  -->
-    <?php endif; ?>
+<h1><?php echo single_post_title(); ?></h1>
 
     <div class="post-metadata-wrap">
         <ul class="post-metadata-top">

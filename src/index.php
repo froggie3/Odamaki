@@ -7,11 +7,11 @@
 				get_template_part('template-parts/content/content');
 			} ?>
 		</div>
-				
-		<?php get_template_part('template-parts/content/bottom'); ?>
-		
 		<?php else: ?>
 		<p>ここにはなにもないよ</p>
 		<?php endif; ?>
+				
+		<?php get_template_part('template-parts/content/bottom'); ?>
+		
 	</main>
 <?php get_footer();

@@ -1,4 +1,14 @@
 <?php get_header(); ?>
+
+<?php
+if (has_post_thumbnail()):  // アイキャッチ画像 ?>
+    <div class="r23jf-wrap">
+        <div class="r23jf" style="background-image: url('<?php the_post_thumbnail_url(); ?>');"></div>
+    </div>
+<?php else: ?><!-- アイキャッチ画像がない時の処理  -->
+    <!-- なにもしない  -->
+<?php endif; ?>
+
 <main class="top-content-background">
 	<?php
         if (is_single()) {

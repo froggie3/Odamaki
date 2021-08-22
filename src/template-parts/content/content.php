@@ -1,15 +1,12 @@
 <div class="entry-content-wrap">
 	<a href="<?php the_permalink(); ?>" class="entry-content">
 		<div class="post-thumbnail-wrapper"><!-- カテゴリー名オーバーレイ  -->
-			<div class="post-thumbnail-overlap">
-				<span>
-					<?php
-						$category = get_the_category(); 
-						$cat_name = $category[0]->cat_name;
-						echo $cat_name;
-					?>
-				</span>
-			</div>
+			<?php $categories = get_the_category(); ?>
+			<?php if ( ! empty( $categories) ) : ?>
+				<div class="post-thumbnail-overlap">
+					<span><?php echo esc_html( $categories[0]->name ); ?></span>
+				</div>
+			<?php endif; ?>
 			<?php if (has_post_thumbnail()): // アイキャッチ画像
 				the_post_thumbnail(
 					'full',
