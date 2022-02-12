@@ -4,5 +4,5 @@
 garbage
 
 # sources
-/src/style-editor.css
-/src/style.css
+style-editor.css
+style.css
