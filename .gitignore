@@ -1,1 +1,6 @@
+.gitignore
 .vscode/
+.vs/
+.garbage/
+./src/style-editor.css
+./src/style.css
