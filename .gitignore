@@ -1,10 +1,8 @@
 # settings and others
 .vscode/
 .vs/
+garbage
 
 # sources
-./src/style-editor.css
-./src/style.css
-
-# garbages
-.garbage/
+/src/style-editor.css
+/src/style.css
