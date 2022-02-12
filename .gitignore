@@ -1,11 +1,12 @@
 # settings and others
 .gitignore
+
 .vscode/
 .vs/
 
-# source files
+# sources
 ./src/style-editor.css
 ./src/style.css
 
-# garbage files
-garbage
+# garbages
+garbage/
