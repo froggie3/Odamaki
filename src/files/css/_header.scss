@@ -1,0 +1,175 @@
+
+
+/*
+/* Navigation stuff
+/*
+/* 1. Left part (images, yokkin.com, etc.)
+/* 2. Right part (links)
+*/
+
+.navigation-background { 
+  background-color: var(--primary-color);
+  /*position: fixed;*/  // this menu can be float like this if you want
+  /*float: left;*/
+  width: 100%;
+  z-index: 100;
+}
+
+.navigation-foreground {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1140px;
+}
+
+/*
+/* website symbols and names
+*/
+
+.navigation-img-link {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+
+
+  a {
+    background-image: url(files/img/favicon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 48px;
+    height: 48px;
+    margin: 0 8px 0 8px;
+    font-size: 0;
+    border-radius: 50%;
+  }
+
+  h1 {
+    padding: 0 0 0 8px;
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navigation-img-link h1 {
+    padding: 0 0 0 8px;
+    display: initial;
+  }
+}
+
+/*
+/* navigation menu
+*/
+
+.navigation-menu-container {
+    font-family: 'Roboto Mono', monospace;
+    height: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  
+    ul {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-size: 1em;
+      list-style: none;
+      display: flex;
+      align-items: center;
+  
+  
+      li {
+        height: 100%;
+  
+        a {
+          color: #fff;
+          text-decoration: none;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding: 0 1rem 0 0;
+          transition-duration: .1s;
+  
+          &:before {
+            padding: 0 1rem 0 1rem;
+            content: ">";
+          }
+  
+          &:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+          }
+        }
+      }
+    }
+  }
+
+/*
+/* an article / website names in the header
+/* this header can display some description
+*/
+
+.jumbotron-background {
+    background-color: #151515;
+    background-size: cover;
+  }
+  
+  .jumbotron-foreground {
+    display: flex;
+    color: #fff;
+    text-shadow: 0px 0px 3px #0000004d;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+    height: 100%;
+    max-width: 1140px;
+    flex-direction: column;
+    place-items: center;
+    justify-content: space-between;
+  }
+  
+  .page-title {
+    font-size: 1.5em;
+    font-weight: normal;
+  }
+  
+  .page-info {
+    font-size: .9em;
+    padding: 2rem 0 0 0;
+  }
+  
+  ul.page-metadata {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  
+    li {
+      margin: 0 6px 0 0;
+      display: inline-block;
+    
+      i {
+          margin: 0 4px 0 0;
+      }
+  
+      a {
+        text-decoration: none;
+        color: var(--secondary-color);
+      }
+    }
+  }
+  
+  /*
+  /* Header stuff (when single posts)
+  */
+  
+  .jumbotron-featured-image {
+    background-position: center;
+    background-size: contain;
+    height: 300px;
+  }

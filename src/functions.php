@@ -57,11 +57,23 @@ add_theme_support( 'custom-header', array(
 ) );
 
 // アイキャッチ画像のサポートを有効化
-add_theme_support('post-thumbnails');
+add_theme_support( 'post-thumbnails' );
+
+
+/*
+/* Gutenberg related
+*/
+
+/*
+/* Enables theme.min.css
+/* {wp_dir}/wp-includes/css/dist/block-library/theme.min.css
+*/
+
+add_theme_support( 'wp-block-styles' );
 
 // ブロックエディタのスタイル指定を有効化
-add_theme_support('editor-styles');
-add_editor_style('style-editor.css');
+add_theme_support( 'editor-styles' );
+add_editor_style( 'style-editor.css' );
 
 // 固定ページで抜粋を使えるようにする
-add_post_type_support('page', 'excerpt');
+add_post_type_support( 'page', 'excerpt' );

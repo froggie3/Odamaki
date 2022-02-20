@@ -1,12 +1,12 @@
 <div
-    class="asdf-background"
+    class="jumbotron-background"
     style="background-image: url('<?php header_image(); ?>');"
 >
     <?php if (is_single()):
     /* 何も出力しない */
     ?>
     <?php else: ?>
-        <div class="asdf-foreground">
+        <div class="jumbotron-foreground">
             <h1 class="page-title"><?php    // ヘッダーのタイトル
                 if (is_page())
                     echo get_the_title();
