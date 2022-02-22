@@ -1,8 +1,7 @@
 <section class="front-section">
     <div class="front-content-left">
-        <div class="content-title-wrapper">
-            <h2 class="content-title">Who am I?</h2>
-        </div>
+        <h2 class="content-title">Who am I?</h2>
+        
         <div class="front-introduction-passage">
             <p>こんにちは。Yokkinと申します。</p>
             <p>かねてよりいろいろな音楽が好きで、自分の好きな曲を好きなように制作しています。</p>
