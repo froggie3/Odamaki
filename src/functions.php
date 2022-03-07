@@ -32,10 +32,10 @@ function footer_widget_init() {
     register_sidebar(array(
         'name' => 'フッターウィジェット',
         'id' => 'footer_widget',
-        'before_widget' => '<div class="footer-widget">',
-        'after_widget' => '</div>',
-        'before_title' => '<h2 class="footer-widget-title">',
-        'after_title' => '</h2>',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
     ));
 }
 
