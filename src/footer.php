@@ -7,16 +7,18 @@
 		<div class="footer-item copyright">
 			<small class="copyright-name">&copy; Yokkin</small>
 		</div>
-
+		
 		<?php
-		wp_nav_menu( array(
-			'menu_class'        => 'footer-item footer-menu-container',
-            'menu_id'           => 'footerNav',
-			'container'			=> 'false',
-			'items_wrap'		=> '<ul id="%1$s" class="%2$s">%3$s</ul>',
-			'theme_location'	=> 'footer_menu',
-			'item_spacing'		=> 'discard',
-		) );
+		if (has_nav_menu( 'footerNav' )) {
+			wp_nav_menu( array(
+				'menu_class'        => 'footer-item footer-menu-container',
+				'menu_id'           => 'footerNav',
+				'container'			=> 'false',
+				'items_wrap'		=> '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'theme_location'	=> 'footerNav',
+				'item_spacing'		=> 'discard',
+			) );
+		}
 		?>
 	</div>
 </footer>

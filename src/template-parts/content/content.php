@@ -1,28 +1,24 @@
 <div class="entry-content-wrap">
 	<a href="<?php the_permalink(); ?>" class="entry-content">
-		<div class="post-thumbnail-wrapper"><!-- カテゴリー名オーバーレイ  -->
-			<?php $categories = get_the_category(); ?>
-			<?php if ( ! empty( $categories) ) : ?>
-				<div class="post-thumbnail-overlap">
-					<span><?php echo esc_html( $categories[0]->name ); ?></span>
-				</div>
-			<?php endif; ?>
-			<?php if (has_post_thumbnail()): // アイキャッチ画像
-				the_post_thumbnail(
-					'full',
+		<div class="post-thumbnail-wrapper"><!-- // カテゴリー名オーバーレイ  -->
+			<?php
+			$categories = get_the_category();
+			if (!empty( $categories) ) { 
+				echo '<div class="post-thumbnail-overlap"><span>' . esc_html( $categories[0]->name ) . '</span></div>';
+			}
+			
+			// アイキャッチ画像
+			if (has_post_thumbnail()) {
+				the_post_thumbnail( 'full', 
 					array(
 						'class' => 'post-thumbnail'
 						)
 				);
+			} else {
+				// アイキャッチ画像がない時の処理
+				echo '<img class="post-thumbnail" alt="「' . get_the_title() . '」のサムネイル画像" src="' . get_template_directory_uri() . '/files/img/empty-thumbnail.png" width="1200" height="630" />';
+			}
 			?>
-			<?php else: ?><!-- アイキャッチ画像がない時の処理  -->
-				<img
-				class="post-thumbnail"
-				src="<?php echo get_template_directory_uri(); ?>/files/img/empty-thumbnail.png"
-				width="1200"
-				height="630"
-				/>
-			<?php endif; ?>
 		</div>
 		<div class="post-description">
 			<ul class="entry-content-metadata-wrapper">

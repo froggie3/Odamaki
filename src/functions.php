@@ -5,26 +5,26 @@ function custom_theme_setup() {
 	// タイトルとかなんやかんや
 	add_theme_support( 'title-tag' );
 
-	if (is_front_page()) {
-		apply_filters( 'document_title_parts', $tagline );
-	}
+	// if (is_front_page()) {
+	//	apply_filters( 'document_title_parts', $tagline );
+	//  }
 }
 
 add_action( 'after_setup_theme', 'custom_theme_setup' );
 
 
 // ナビゲーションメニュー
-if ( ! function_exists( 'mytheme_register_nav_menu' ) ) {
+register_nav_menus(array(
+    'headerNav' => 'on Header',
+    'footerNav' => 'on Footer',
+) );
 
-    function mytheme_register_nav_menu(){
-        register_nav_menus( array(
-            'header_menu' => __( 'Header Menu', 'ヘッダー部のメニュー' ),
-            'footer_menu' => __( 'Footer Menu', 'フッター部のメニュー' ),
-        ) );
+// 検索機能を無効化するコードを誰かが書いてくれるらしい
+
+/*
+    function disableSearch(){
     }
-    add_action( 'after_setup_theme', 'mytheme_register_nav_menu', 0 );
-}
-
+*/
 
 // ウィジェット追加
 
