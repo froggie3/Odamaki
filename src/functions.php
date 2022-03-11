@@ -64,16 +64,55 @@ add_theme_support( 'post-thumbnails' );
 /* Gutenberg related
 */
 
-/*
-/* Enables theme.min.css
-/* {wp_dir}/wp-includes/css/dist/block-library/theme.min.css
-*/
+add_theme_support( 'wp-block-styles' );		// デフォルトのブロックスタイル
 
-add_theme_support( 'wp-block-styles' );
-
-// ブロックエディタのスタイル指定を有効化
-add_theme_support( 'editor-styles' );
-add_editor_style( 'style-editor.css' );
 
 // 固定ページで抜粋を使えるようにする
 add_post_type_support( 'page', 'excerpt' );
+
+
+function mytheme_setup_theme_supported_features() {		// ブロックフォントサイズ
+    add_theme_support( 'editor-color-palette', array(
+        array(
+            'name'  => esc_attr__( 'dark blue', 'themeLangDomain' ),
+            'slug'  => 'dark-blue',
+            'color' => '#2d4059',
+        ),
+        array(
+            'name'  => esc_attr__( 'dark red', 'themeLangDomain' ),
+            'slug'  => 'dark-red',
+            'color' => '#bb2a2a',
+        ),
+        array(
+            'name'  => esc_attr__( 'black', 'themeLangDomain' ),
+            'slug'  => 'black',
+            'color' => '#333',
+        ),
+        array(
+            'name'  => esc_attr__( 'white', 'themeLangDomain' ),
+            'slug'  => 'white',
+            'color' => '#f3f3f3',
+        ),
+    ) );
+}
+add_action( 'after_setup_theme', 'mytheme_setup_theme_supported_features' );
+
+add_theme_support( 'disable-custom-colors' );		// ブロックカラーパレットでのカスタム色の無効化
+add_theme_support( 'disable-custom-gradients' );	// カスタムグラデーションの無効化
+
+add_action( 'after_setup_theme', 'mytheme_setup_theme_supported_features' );	// フォントサイズ
+add_theme_support( 'editor-font-sizes', array(
+    array(
+        'name' => __( 'Regular', 'themeLangDomain' ),
+        'size' => 16,
+        'slug' => 'regular'
+    ),
+) );
+
+add_theme_support('disable-custom-font-sizes');		// カスタムフォントサイズの無効化
+add_theme_support( 'custom-units', array() );		// カスタムユニットのサポート
+remove_theme_support( 'core-block-patterns' );		// デフォルトのブロックパターンの無効化
+
+add_theme_support( 'editor-styles' );	// エディタースタイル
+add_editor_style( 'style-editor.css' );	// エディタースタイルのエンキュー
+add_theme_support( 'responsive-embeds' );	// 埋め込みコンテンツのレスポンシブ化

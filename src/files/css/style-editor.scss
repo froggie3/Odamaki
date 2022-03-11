@@ -3,7 +3,23 @@ body {
     color: #333333;
 }
 
-h1,
+/* メインのカラム幅 */.wp-block {
+    max-width: 768px;
+}
+ 
+/* 「幅広」ブロックの幅 */.wp-block[data-align="wide"] {
+    max-width: 1140px;
+}
+ 
+/* 「全幅」ブロックの幅 */.wp-block[data-align="full"] {
+    max-width: none;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
 h2,
 h3,
 h4,
@@ -15,10 +31,18 @@ h6 {
     font-size: 1.2em;
 }
 
-h1,
 h2 {
     padding: 0.5rem 0;
     margin: 2rem 0 1rem 0;
+}
+
+h2::after{
+    content: "";
+    display: block;
+    margin: .5rem 0 0 0;
+    width: auto;
+    height: 1px;
+    background-color: var(--third-color);
 }
 
 h3 {
@@ -26,13 +50,14 @@ h3 {
     margin: 1.5rem 0 1rem 0;
 }
 
-h1,
-h2 {
-    border-bottom: 1px solid #bb2a2a;
-}
-
-h3 {
-    border-left: 2px solid #2d4059;
+h3::before {
+    content: "";
+    display: block;
+    background-color: var(--primary-color);
+    height: 3rem;
+    width: 2px;
+    margin: 0px 0.75em 3px 0px;
+    float: left;
 }
 
 pre {
@@ -51,26 +76,31 @@ samp {
     padding: 2px 8px;
 }
 
-p strong,
-ul strong,
-ol strong {
+p {
+  margin: 1rem 0;
+  line-height: 1.8;
+}
+
+strong {
     font-weight: bold;
+}
+
+mark {
     background: linear-gradient(
-      0deg
-      , #fce100, #fce100) no-repeat;
+    0deg
+    , #fce100, #fce100) no-repeat;
     background-size: 100% 33%;
     background-position: bottom;
-  }
-  
+}
 
-p a {
+a {
     color: #175199;
     text-decoration: none;
     transition-duration: .1s;
     line-break: anywhere;
 }
 
-p a  {
+a:hover  {
     text-decoration-line: underline;
 }
 
@@ -98,3 +128,19 @@ tr td strong {
 .wp-block-image figcaption {
   color: #555;
 }
+
+ul,
+ol {
+  line-height: 2;
+  padding: 0 0 0 2em;
+  margin: 1em 0;
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
