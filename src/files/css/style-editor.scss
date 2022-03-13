@@ -34,30 +34,13 @@ h6 {
 h2 {
     padding: 0.5rem 0;
     margin: 2rem 0 1rem 0;
-}
-
-h2::after{
-    content: "";
-    display: block;
-    margin: .5rem 0 0 0;
-    width: auto;
-    height: 1px;
-    background-color: var(--third-color);
+    border-bottom: 1px solid #bb2a2a;
 }
 
 h3 {
     padding: 0.25rem 0.75rem;
     margin: 1.5rem 0 1rem 0;
-}
-
-h3::before {
-    content: "";
-    display: block;
-    background-color: var(--primary-color);
-    height: 3rem;
-    width: 2px;
-    margin: 0px 0.75em 3px 0px;
-    float: left;
+    border-left: 2px solid #2d4059;
 }
 
 pre {
