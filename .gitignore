@@ -1,7 +1,7 @@
 # settings and others
 .vscode/
 .vs/
-garbage
+garbage/
 
 # sources
 ./src/style-editor.css

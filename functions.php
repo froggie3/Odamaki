@@ -60,6 +60,15 @@ add_theme_support( 'custom-header', array(
 add_theme_support( 'post-thumbnails' );
 
 
+// CSS を読み込む
+wp_enqueue_style( 'style', get_stylesheet_uri(), false, bin2hex(random_bytes(2)), 'all');
+
+// Google Fonts を読み込む
+wp_enqueue_style( 'googlefont', 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono&family=Work+Sans&family=Work+Sans:wght@300&display=swap', array(), null );
+
+// JavaScript を読み込む
+wp_enqueue_script( 'script', get_template_directory_uri() . '/files/js/script.js' , array ( 'jquery' ), bin2hex(random_bytes(2)), true);
+
 /*
 /* Gutenberg related
 */

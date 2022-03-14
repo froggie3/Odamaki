@@ -14,8 +14,7 @@
                 ?>
             <?php endif; ?>
         </div>
-
-		<?php  ?>
+		
 		<?php
 		if (have_posts()) {		// ループ開始
 			global $wp_query;
@@ -53,7 +52,7 @@
 								</li>
 							</ul>
 							<div class="post-title-wrapper">
-								<h3 class="post-excerpt-title"><?php the_title(); ?></h3>
+								<?php the_title('<h3 class="post-excerpt-title">', '</h3>'); ?>
 							</div>
 						</div>
 					</a>

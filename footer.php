@@ -22,7 +22,6 @@
 		?>
 	</div>
 </footer>
-
 <div class="jump-to-top-container">
 	<a href="#top" class="jump-to-top">
 		<div class="arrow-wrapper" title="ページの最上部へ戻る">
