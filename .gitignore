@@ -2,7 +2,3 @@
 .vscode/
 .vs/
 garbage/
-
-# sources
-./style-editor.css
-./style.css
