@@ -6,9 +6,6 @@ Author URI: https://yokkin.com/
 Description: A dedicated WordPress theme for yokkin.com.
 Text Domain: odamaki
 */
-/*
-/* Global settings (1)
-*/
 :root {
   --theme-color-blue: #2d4059;
   --theme-color-red: #bb2a2a;
@@ -18,15 +15,13 @@ Text Domain: odamaki
   --theme-color-yellow: #fce100;
   --font-color-white: #f3f3f3;
   --background-color: #fff;
-  --default-font-family: Helvetica Neue, Helvetica, Arial, Hiragino Kaku Gothic Pro, Meiryo, MS PGothic, sans-serif;
-  --monospace-font-family: "Roboto Mono", monospace;
+  --default-font-family: Helvetica Neue, Helvetica, Arial,
+    Hiragino Kaku Gothic Pro, Meiryo, MS PGothic, sans-serif;
+  --monospace-font-family: "Roboto Mono";
   --container-width: 1140px;
   --medium-viewport-width: 768px;
   --large-viewport-width: 1024px;
-}
-
-html {
-  scroll-behavior: smooth;
+  --theme-shadow: #00000021 0px 10px 20px;
 }
 
 body {
@@ -54,91 +49,64 @@ sup {
 }
 
 /*
-/* Header and Top navigation
-*/
-/*
 /* Navigation stuff
-/*
-/* 1. Left part (images, yokkin.com, etc.)
-/* 2. Right part (links)
 */
-.navigation-foreground {
-  height: 4rem;
-  width: 100%;
+.top-navigation-foreground {
   display: grid;
   overflow-x: auto;
-  margin: 0 auto;
   grid-template-columns: minmax(-webkit-min-content, -webkit-min-content) 1fr;
   grid-template-columns: minmax(min-content, min-content) 1fr;
-}
-@media screen and (min-width: 1024px) {
-  .navigation-foreground {
-    max-width: var(--container-width);
-  }
+  grid-template-rows: 4rem;
+  padding: 0 !important;
 }
 
-.navigation-foreground::after {
-  content: "";
-  display: block;
+.top-navigation {
   width: 100%;
-  height: 4rem;
   background-color: var(--theme-color-blue);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  margin: 0 auto;
 }
 
-/*
-/* website symbols and names
-*/
-.navigation-img-link {
+.top-navigation-img-link {
   height: 100%;
-  color: var(--font-color-white);
-  font: 0.9em var(--monospace-font-family);
   text-decoration: none;
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   transition-duration: 0.1s;
-  font-size: 0;
   padding-left: 0.5rem;
   padding-right: 0;
+  color: var(--font-color-white);
+  font-size: 0;
+  font: 0.9em var(--monospace-font-family);
 }
 @media screen and (min-width: 768px) {
-  .navigation-img-link {
-    font-size: 0.8em;
+  .top-navigation-img-link {
     padding-right: 0.5rem;
+    font-size: 0.8em;
   }
 }
 
-.navigation-img-link:hover {
+.top-navigation-img-link:hover {
   background-color: var(--background-color);
   color: var(--theme-color-blue);
 }
 
-.navigation-img-link::before {
+.top-navigation-img-link::before {
   content: "";
   display: block;
   background: url(files/img/favicon.png) no-repeat center top/cover;
   width: 48px;
   height: 48px;
   font-size: 0;
-  border-radius: 50%;
-  margin-right: 0.5rem;
+  border-radius: 999px;
+  margin-right: 10px;
 }
 @media screen and (min-width: 768px) {
-  .navigation-img-link::before {
+  .top-navigation-img-link::before {
     display: initial;
   }
 }
 
-/*
-/* navigation menu
-*/
-.navigation-menu-container {
+.top-navigation-menu-container {
   font-family: var(--monospace-font-family);
   height: 100%;
   white-space: nowrap;
@@ -149,14 +117,14 @@ sup {
   display: flex;
 }
 @media screen and (min-width: 768px) {
-  .navigation-menu-container {
+  .top-navigation-menu-container {
     width: auto;
   }
 }
-.navigation-menu-container li {
+.top-navigation-menu-container li {
   height: 100%;
 }
-.navigation-menu-container li a {
+.top-navigation-menu-container li a {
   color: var(--font-color-white);
   text-decoration: none;
   height: 100%;
@@ -165,11 +133,11 @@ sup {
   padding: 0 1rem 0 0;
   transition-duration: 0.1s;
 }
-.navigation-menu-container li a:before {
+.top-navigation-menu-container li a:before {
   padding: 0 1rem 0 1rem;
   content: ">";
 }
-.navigation-menu-container li a:hover {
+.top-navigation-menu-container li a:hover {
   background-color: var(--background-color);
   color: var(--theme-color-blue);
 }
@@ -178,37 +146,41 @@ sup {
 /* an article / website names in the header
 /* this header can display some description
 */
+.jumbotron {
+  width: 100%;
+  background-color: var(--background-color);
+  background-size: cover;
+}
+
 .jumbotron-background {
-  background: #151515/cover;
   font-family: var(--monospace-font-family);
   display: grid;
   grid-gap: 2rem;
-  padding: 0 16px;
   color: var(--font-color-white);
-  text-shadow: 0px 0px 3px #0000004d;
+  text-shadow: var(--theme-shadow);
   height: 240px;
   justify-items: center;
   align-content: center;
-  margin: 0 calc(50% - 50vw);
 }
-.page-title {
+
+.jumbotron-page-title {
   font-weight: normal;
   font-size: 1em;
   margin: 0;
 }
 @media screen and (min-width: 768px) {
-  .page-title {
+  .jumbotron-page-title {
     font-size: 2em;
   }
 }
 
-.page-info {
+.jumbotron-page-info {
   font-size: 0.7em;
   padding: 0;
   font-family: var(--default-font-family);
 }
 @media screen and (min-width: 768px) {
-  .page-info {
+  .jumbotron-page-info {
     font-size: 0.9em;
   }
 }
@@ -231,11 +203,18 @@ ul.page-metadata li a {
 }
 
 /*
-/* Header stuff (when single posts)
-*/
+  /* Header stuff (when single posts)
+  */
 .jumbotron-featured-image {
-  background: center/contain;
-  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  aspect-ratio: 1.91/1;
+}
+@media screen and (min-width: 768px) {
+  .jumbotron-featured-image {
+    background: center/contain;
+    height: 300px;
+  }
 }
 
 /*
@@ -278,18 +257,12 @@ ul.page-metadata li a {
   text-decoration: none;
 }
 
-/*
-/* Media layouts (2)
-*/
 .content-wrapper-normal {
   padding: 2rem 0;
   margin: 0 auto;
   max-width: var(--medium-viewport-width);
 }
 
-/*
-/* Global settings (2)
-*/
 p a {
   color: #175199;
   text-decoration: none;
@@ -383,7 +356,8 @@ tr td strong {
   background-color: var(--theme-color-blue);
   color: var(--font-color-white);
 }
-.table-wrap th, .table-wrap td {
+.table-wrap th,
+.table-wrap td {
   padding: 0.5em 1em;
   border: 1px solid var(--border-color);
 }
@@ -399,7 +373,7 @@ li::marker {
   color: #333;
   display: block;
   text-decoration: none;
-  z-index: 998;
+  z-index: 1;
 }
 
 .content-rules ul,
@@ -427,7 +401,9 @@ p {
   overflow: auto;
 }
 
-.content-rules p code, .content-rules p kbd, .content-rules p samp {
+.content-rules p code,
+.content-rules p kbd,
+.content-rules p samp {
   border: 1px solid var(--border-color);
   font-family: var(--monospace-font-family);
   line-height: 2;
@@ -437,7 +413,8 @@ p {
 .content-rules p strong {
   font-weight: bold;
 }
-.content-rules ul > strong, .content-rules ol > strong {
+.content-rules ul > strong,
+.content-rules ol > strong {
   font-weight: bold;
 }
 .content-rules mark {
@@ -602,7 +579,6 @@ ul.post-metadata-bottom {
 .footer-widget-container {
   font-family: var(--monospace-font-family), var(--default-font-family);
   color: var(--font-color-white);
-  margin: 0 auto;
   padding: 2rem 16px 2rem;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -619,7 +595,6 @@ ul.post-metadata-bottom {
 }
 @media screen and (min-width: 1024px) {
   .footer-widget-container {
-    max-width: var(--container-width);
     grid-template-columns: repeat(3, 1fr);
     row-gap: 3rem;
   }
@@ -760,7 +735,6 @@ ul.post-metadata-bottom {
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: center;
-  box-sizing: border-box;
 }
 #followmelink li:hover {
   background-color: var(--border-color);
@@ -815,8 +789,7 @@ nav.navigation.pagination {
   text-decoration: none;
 }
 
-.page-numbers:hover:not(.current,
-.dots) {
+.page-numbers:hover:not(.current, .dots) {
   color: var(--font-color-white);
   background: var(--theme-color-blue);
   border: 1px solid var(--theme-color-blue);
@@ -928,7 +901,7 @@ a.entry-content-link:hover {
   background: #23282d;
   font-size: 0.8em;
   font-weight: bold;
-  z-index: 999;
+  z-index: 1;
 }
 
 .post-excerpt-title {
@@ -952,16 +925,6 @@ a.entry-content-link:hover {
   margin: 0 4px 0 0;
 }
 
-/*
-/* Front Page
-*/
-.img-wrap-left {
-  margin: 0 0 1em 0;
-}
-
-/*
-/* Media Layouts (4)
-*/
 .wp-block-button__link {
   background-color: var(--theme-color-blue);
   padding: 12px 18px !important;
@@ -1077,12 +1040,8 @@ div#ez-toc-container p.ez-toc-title {
 }
 
 /*
-/* front
+/* Front Page
 */
-/**
-** トップページ用のCSS
-** 3列の CSS Grid
-**/
 .content-title {
   display: inline-block;
   margin: 2rem 0 0;
@@ -1143,6 +1102,7 @@ h2.content-title::after {
 
 .large-section-wrapper-b img {
   width: 50vw;
+  border-radius: 999px;
 }
 @media screen and (min-width: 1024px) {
   .large-section-wrapper-b img {
@@ -1264,7 +1224,6 @@ h2.content-title::after {
 }
 @media screen and (min-width: 768px) {
   .item {
-    /*　for PC　*/
     transition: all 0.2s;
     padding-bottom: 1.5rem;
   }
@@ -1272,24 +1231,20 @@ h2.content-title::after {
 
 @media screen and (min-width: 768px) {
   .item-border {
-    /*　for PC　*/
     border: 1px solid var(--border-color);
   }
 }
 
 @media screen and (min-width: 1024px) {
   .animated-when-hovered {
-    /*　for PC　*/
     transition: all 0.3s ease;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .animated-when-hovered:hover {
-    /*　for PC　*/
     transform: translateY(-10px);
-    border: 1px solid var(--theme-color-black);
-    box-shadow: #00000021 0px 10px 20px;
+    box-shadow: var(--theme-shadow);
   }
 }
 
@@ -1322,8 +1277,8 @@ h2.content-title::after {
 /* JUMP TO TOP
 */
 .jump-to-top-container {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   position: fixed;
   bottom: 3rem;
   right: 2rem;
@@ -1331,38 +1286,51 @@ h2.content-title::after {
 
 .jump-to-top-container * {
   transition: all 0.2s ease 0s;
+  margin: 0;
+  padding: 0;
 }
 
 .jump-to-top {
   display: block;
   height: 100%;
+  width: 100%;
+  border: none;
   background-color: var(--theme-color-blue);
-  border-radius: 100%;
-  filter: opacity(0.5);
-  z-index: 100;
-}
-
-.jump-to-top:hover {
-  background-color: var(--background-color);
-  filter: opacity(1);
-}
-
-.arrow-wrapper {
-  height: 100%;
-  display: flex;
-  justify-content: center;
+  fill: var(--background-color);
+  border-radius: 999px;
+  filter: opacity(0.8);
+  z-index: 50;
+  box-shadow: var(--theme-shadow);
 }
 
 .arrow {
   width: 1rem;
-  height: 100%;
+}
+
+.jump-to-top svg {
   fill: var(--background-color);
 }
 
-.jump-to-top:hover .arrow-wrapper .arrow {
-  fill: var(--theme-color-blue);
-}
+@media (hover: hover) {
+  .jump-to-top:hover {
+    background-color: var(--background-color);
+    filter: opacity(1);
+  }
 
+  .jump-to-top:hover svg {
+    fill: var(--theme-color-blue);
+  }
+}
+@media not all and (hover: hover) {
+  .jump-to-top:active {
+    background-color: var(--background-color);
+    filter: opacity(1);
+  }
+
+  .jump-to-top:active svg {
+    fill: var(--theme-color-blue);
+  }
+}
 /*
 /* ブロックエディタのCSS割り当て
 */
@@ -1377,4 +1345,20 @@ h2.content-title::after {
   .alignwide[class^=wp-block] {
     margin: 0 calc(50% - var(--container-width) / 2);
   }
+}
+
+.debugInfo-wrap {
+  width: 20rem;
+  height: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: var(--theme-color-blue);
+  padding: 1rem;
+  z-index: 50;
+}
+
+.debugInfo-wrap * {
+  color: var(--font-color-white);
+  font-family: var(--monospace-font-family);
 }/*# sourceMappingURL=style.css.map */

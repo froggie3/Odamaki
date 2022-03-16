@@ -1,20 +1,21 @@
 <?php get_header(); ?>
-	<main class="container container-big">
-        <div class="jumbotron-background" style="background-image: url('<?php header_image(); ?>')">
-            <?php if (!empty(headerTitle())): ?>
-                <?php echo '<h1 class="page-title">' . headerTitle() . '</h1>'; ?>
-            <?php endif; ?>
+	<div class="jumbotron" style="background-image: url('<?php header_image(); ?>')">
+		<div class="jumbotron-background container container-big">
+			<?php if (!empty(headerTitle())): ?>
+				<?php echo '<h1 class="jumbotron-page-title">' . headerTitle() . '</h1>'; ?>
+			<?php endif; ?>
 
-            <?php if (is_single()):  // 投稿ページの詳細は不要なので何も出力しない ?>
-            <?php else: ?>
-                <?php
-                if (!empty(headerDescription())) {
-                    echo '<div class="page-info">' . headerDescription() . '</div>';
-                }
-                ?>
-            <?php endif; ?>
-        </div>
-		
+			<?php if (is_single()):  // 投稿ページの詳細は不要なので何も出力しない ?>
+			<?php else: ?>
+				<?php
+				if (!empty(headerDescription())) {
+					echo '<div class="jumbotron-page-info">' . headerDescription() . '</div>';
+				}
+				?>
+			<?php endif; ?>
+		</div>
+	</div>
+	<main class="container container-big">
 		<?php
 		if (have_posts()) {		// ループ開始
 			global $wp_query;

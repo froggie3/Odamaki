@@ -1,19 +1,21 @@
 <?php get_header(); ?>
+    <div class="jumbotron-featured-image-wrap">
+        <?php 
+        function displayPostImage() {
+            if (has_post_thumbnail()) {
+                $postThumbnailUrl = the_post_thumbnail_url();
+            }
+            else {
+                $postThumbnailUrl = get_template_directory_uri() . '/files/img/empty-thumbnail.png';
+            }
+            
+            echo '<div class="jumbotron-featured-image" style="background-image: url(\'' . $postThumbnailUrl . '\'></div>';
+        }
+
+        displayPostImage();
+        ?>
+    </div>
 	<main class="container">
-        <div class="jumbotron-featured-image-wrap">
-            <?php if (has_post_thumbnail()): ?>
-                <div class="jumbotron-featured-image" style="
-                    background-image: url(' <?php the_post_thumbnail_url(); ?> ');
-                    ">
-                </div>
-            <?php else: ?>
-                <div class="jumbotron-featured-image" style="
-                    background-image: url(' <?php echo get_template_directory_uri() . '/files/img/empty-thumbnail.png' ?> ');
-                    ">
-                </div>
-            <?php endif; ?>
-        </div>
-        
         <div class="content-above">
             <?php the_title('<h1>', '</h1>'); ?>
                 <div class="post-metadata-wrap">

@@ -32,19 +32,23 @@
 <?php endif; ?>
 </head>
 <body>
-<header class="navigation-foreground">
-    <a class="navigation-img-link" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
-    <?php
-    // Header Navigation Menu
-    if (has_nav_menu( 'headerNav' )) {
-        wp_nav_menu( array(
-            'menu_class'        => 'navigation-menu-container',
-            'menu_id'           => 'headerNav',
-            'container'         => 'false',
-            'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-            'theme_location'    => 'headerNav',
-            'item_spacing'		=> 'discard',
-        ) );
-    }
-    ?>
-</header>
+<nav class="top-navigation">
+    <div class="top-navigation-foreground container container-big">
+        <a class="top-navigation-img-link" href="<?php echo esc_url(home_url('/')); ?>">
+            <span><?php bloginfo('name'); ?></span>
+        </a>
+        <?php
+        // Header Navigation Menu
+        if (has_nav_menu( 'headerNav' )) {
+            wp_nav_menu( array(
+                'menu_class'        => 'top-navigation-menu-container',
+                'menu_id'           => 'headerNav',
+                'container'         => 'false',
+                'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                'theme_location'    => 'headerNav',
+                'item_spacing'		=> 'discard',
+            ) );
+        }
+        ?>
+    <div class="container-big">
+</nav>

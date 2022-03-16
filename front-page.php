@@ -1,19 +1,21 @@
 <?php get_header(); ?>
-	<div class="container container-big">
-		<div class="jumbotron-background" style="background-image: url('<?php header_image(); ?>')">
+	<div class="jumbotron" style="background-image: url('<?php header_image(); ?>')">
+		<div class="jumbotron-background container container-big">
 			<?php if (!empty(headerTitle())): ?>
-				<?php echo '<h1 class="page-title">' . headerTitle() . '</h1>'; ?>
+				<?php echo '<h1 class="jumbotron-page-title">' . headerTitle() . '</h1>'; ?>
 			<?php endif; ?>
 
 			<?php if (is_single()):  // 投稿ページの詳細は不要なので何も出力しない ?>
 			<?php else: ?>
 				<?php
 				if (!empty(headerDescription())) {
-					echo '<div class="page-info">' . headerDescription() . '</div>';
+					echo '<div class="jumbotron-page-info">' . headerDescription() . '</div>';
 				}
 				?>
 			<?php endif; ?>
 		</div>
+	</div>
+	<div class="container container-big">
 		<h2 class="content-title margin-top">Who am I?</h2>
 		<section id="whoami" class="large-section-wrapper item-border grid-test whoami-inside content-rules">
 			<div class="large-section-wrapper-a item">
