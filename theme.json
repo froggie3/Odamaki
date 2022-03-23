@@ -1,0 +1,31 @@
+{
+    "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
+    "version": 2,
+    "settings": {
+        "color": {
+            "background": false,
+            "text": false,
+            "link": false,
+            "custom": true,
+            "defaultPalette": false,
+            "palette": [],
+            "customGradient": false,
+            "defaultGradients": false,
+            "gradients": [],
+            "duotone": [],
+            "customDuotone": true
+        },
+        "typography": {
+            "dropCap": false,
+            "fontStyle": false,
+            "fontWeight": false,
+            "letterSpacing": false,
+            "lineHeight": false,
+            "textDecoration": false,
+            "textTransform": false,
+            "customFontSize": false,
+            "fontSizes": [],
+            "fontFamilies": []
+        }
+    }
+}

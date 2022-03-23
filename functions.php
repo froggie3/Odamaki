@@ -1,175 +1,183 @@
 <?php
-// テーマ初期化
+if (!function_exists( 'odamaki_setup' )):
+/**
+* Sets up theme defaults and registers support for various WordPress features
+*
+*  It is important to set up these functions before the init hook so that none of these
+*  features are lost.
+*
+*  @since Odamaki 1.0
+*/
+function odamaki_setup() {
+    add_action( 'wp_enqueue_scripts', function(){
+        if ( ! is_admin() ) :
+            wp_enqueue_style( 'ress', get_template_directory_uri() . '/files/css/ress.min.css', false, false, 'all' );
+            wp_enqueue_style( 'style', get_template_directory_uri() . '/style.min.css', false, false, 'all' );
+            wp_enqueue_script( 'script', get_template_directory_uri() . '/files/js/script.js' , array(), false, true);
+            wp_enqueue_script( 'smooth-scroll', 'https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0/dist/smooth-scroll.polyfills.min.js' , array(), false, true);
+            wp_add_inline_script( 'init-smooth-scroll', 'var scroll = new SmoothScroll(\"a[href*="#"]\");', 'after' );
+        endif;
+        wp_enqueue_style( 'googlefont', 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono&display=swap', array(), null );
+        wp_enqueue_style( 'yakuhanjp', 'https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css', array(), null );
+    });
+    register_nav_menus( array( 'headerNav' => 'on Header', 'footerNav' => 'on Footer', ) );     // ナビゲーションメニューを登録
+    add_action( 'widgets_init', function() {
+            register_sidebar (
+                array(
+                'name'              => 'フッターウィジェット',
+                'id'                => 'footer_widget',
+                'description'       => 'フッターに表示されるウィジェットです。',
+                'before_widget'     => '<li id="%1$s" class="widget %2$s">',
+                'after_widget'      => '</li>',
+                'before_title'      => '<h2 class="widgettitle">',
+                'after_title'       => '</h2>',
+            ));
+        }
+    );       // ウィジェットを追加   
+    add_theme_support( 'title-tag' );   // title タグを wp_head() 内に出力
+    add_theme_support( 'post-formats', array ( 'aside', 'gallery', 'quote', 'image', 'video' ) );
+    add_theme_support( 'custom-header', array(
+        'default-image'          => get_template_directory_uri() . '/files/img/header-default.jpg',
+        'random-default'         => false,
+        'width'                  => 1920,
+        'height'                 => 200,
+        'flex-height'            => true,
+        'flex-width'             => true,
+        'default-text-color'     => '#fff',
+        'header-text'            => true,
+        'uploads'                => true,
+    ) );
+    
+    add_theme_support( 'post-thumbnails' );     // アイキャッチ画像のサポートを有効化
 
-function custom_theme_setup() {
-	// タイトルとかなんやかんや
-	add_theme_support( 'title-tag' );
+    /* Gutenberg related */
 
-	// if (is_front_page()) {
-	//	apply_filters( 'document_title_parts', $tagline );
-	//  }
+    add_theme_support( 'wp-block-styles' );		// デフォルトのブロックスタイル
+    add_theme_support( 'align-wide' );		// 幅広の配置
+    add_post_type_support( 'page', 'excerpt' );     // 固定ページで抜粋を使えるようにする
+    remove_theme_support( 'core-block-patterns' );		// デフォルトのブロックパターンの無効化
+    add_theme_support( 'editor-styles' );	// エディタースタイル
+    add_editor_style( 'style-editor.min.css' );	// エディタースタイルのエンキュー
+    add_theme_support( 'responsive-embeds' );	// 埋め込みコンテンツのレスポンシブ化
+    remove_filter( 'comment_text', 'make_clickable', 9);
+    add_filter( 'pre_comment_content', 'wp_specialchars' );
+    add_filter( 'comment_text', 'wp_filter_nohtml_kses' );
+    add_filter( 'comment_text_rss', 'wp_filter_nohtml_kses' );
+    add_filter( 'comment_excerpt', 'wp_filter_nohtml_kses' );
+    remove_action( 'wp_head', 'wp_resource_hints', 2, 99 ); 
+    remove_action( 'wp_head', 'rest_output_link_wp_head' );
+    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+    remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+    remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+    remove_action( 'wp_head', 'wlwmanifest_link' );
+    remove_action( 'wp_head', 'wp_generator' );
+    remove_action( 'wp_head', 'rsd_link' );
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'wp_head', 'feed_links' );
+    remove_action( 'wp_head', 'feed_links_extra' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_filter( 'the_content', 'wpautop' );
+    remove_filter( 'the_excerpt', 'wpautop' );
+
+    if ( ! function_exists( 'better_comments' ) ) :
+        function better_comments($comment, $args, $depth) {
+            ?>
+           <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+            <div class="comment">
+                <div class="" style="display: flex;">
+                    <div class="" style="display: inline-block; border-radius: 999px;">
+                        <?php echo get_avatar ( $comment, $size = '64', $default = 'http://0.gravatar.com/avatar/36c2a25e62935705c5565ec465c59a70?s=32&d=mm&r=g' ); ?>
+                    </div>
+
+                    <div class="comment-by" style="display: inline-block;  margin-left: 1em; padding-top: 0.5rem; ">
+                        <div>
+                            <div class="comment-name" style="display: inline-block; font-weight: bold;">
+                                <?php echo get_comment_author() ?>
+                            </div>
+                            <div class="comment-date" style="display: inline-block; margin-left: .5em; font-size: .7em;">
+                                <?php printf(/* translators: 1: date and time(s). */ esc_html__('%1$s at %2$s' , '5balloons_theme'), get_comment_date(),  get_comment_time()) ?>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-by">
+                            <?php comment_reply_link( array_merge ( $args, array( 'depth' => $depth, 'max_depth' => $args[ 'max_depth' ] ) ) ) ?>
+                        </div>
+
+                        
+                        <div class="comment-block">
+                            <div class="comment-arrow"></div>
+                                <?php if ($comment->comment_approved == '0') : ?>
+                                    <em><?php esc_html_e('Your comment is awaiting moderation.','5balloons_theme') ?></em>
+                                    <br />
+                                <?php endif; ?>
+                            <p> <?php comment_text() ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+        }
+    endif;
 }
+endif;  // odamaki_setup
+add_action( 'after_setup_theme', 'odamaki_setup' );
 
-add_action( 'after_setup_theme', 'custom_theme_setup' );
 
+$descriptionMessage = [
+    'front' => [
+        'title' => '<span class=\'word-wrap-block\'>Welcome</span> <span class=\'word-wrap-block\'>to</span> <span class=\'word-wrap-block\'>yokkin.com!</span>',
+        'description' => '<span class=\'word-wrap-block\'>インターネット上にて</span><span class=\'word-wrap-block\'>活動する音屋、</span><span class=\'word-wrap-block\'>YokkinのWebサイトです。</span>',
+    ],
+    'home' => [
+        'title' => 'Knowledge Base',
+        'description' => 'お知らせや身辺のことを綴っています。',
+    ],
+    '404' => [
+        'title' => '404 Not Found',
+        'description' => 'ページが見つかりませんでした。',
+    ],
+];
 
-// ナビゲーションメニュー
-register_nav_menus(array(
-    'headerNav' => 'on Header',
-    'footerNav' => 'on Footer',
-) );
+function showPageInfo() {
+    global $descriptionMessage;
+    
+    if (is_page()):
+        if (is_front_page()): 
+            $title = $descriptionMessage['front']['title'];
+            $descr = $descriptionMessage['front']['description'];
+            echo '<h1 class="jumbotron-page-title big text-shadow">' . $title . '</h1>';
+            echo '<div class="jumbotron-page-info big text-shadow">' . $descr . '</div>';
+        else:
+            $title = get_the_title();
+            $descr = get_the_excerpt();
+            echo '<h1 class="jumbotron-page-title">' . $title . '</h1>';
+            echo '<div class="jumbotron-page-info">' . $descr . '</div>';
+        endif;
+    endif;
+    if (is_home() || is_single()):
+        $title = $descriptionMessage['home']['title'];
+        $descr = $descriptionMessage['home']['description'];
+        echo '<h1 class="jumbotron-page-title">' . $title . '</h1>';
+        echo '<div class="jumbotron-page-info">' . $descr . '</div>';
+    endif;
+    if (is_archive()):
+        $title = single_term_title();
+
+        if (empty(term_description())):
+            $descr = '「' . single_term_title( '', false) . '」が含まれる記事を表示しています。';
+        else:
+            $descr = term_description();
+        endif;
+        echo '<h1 class="jumbotron-page-title">' . $title . '</h1>';
+        echo '<div class="jumbotron-page-info">' . $descr . '</div>';
+    endif;
+    if (is_404()):
+        $title = $descriptionMessage['404']['title'];
+        $descr = $descriptionMessage['404']['description'];
+        echo '<h1 class="jumbotron-page-title">' . $title . '</h1>';
+        echo '<div class="jumbotron-page-info">' . $descr . '</div>';
+    endif;   
+}
 
 // 検索機能を無効化するコードを誰かが書いてくれるらしい
-
-/*
-    function disableSearch(){
-    }
-*/
-
-// ウィジェット追加
-
-function footer_widget_init() {
-    register_sidebar(array(
-        'name' => 'フッターウィジェット',
-        'id' => 'footer_widget',
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '',
-        'after_title' => '',
-    ));
-}
-
-add_action('widgets_init', 'footer_widget_init');
-
-
-// カスタムヘッダーのサポート
-
-add_theme_support( 'custom-header', array(
-	'default-image'          => get_template_directory_uri() . '/files/img/header-default.jpg',
-	'random-default'         => false,
-	'width'                  => 1920,
-	'height'                 => 200,
-	'flex-height'            => true,
-	'flex-width'             => true,
-	'default-text-color'     => '#fff',
-	'header-text'            => true,
-	'uploads'                => true,
-) );
-
-// アイキャッチ画像のサポートを有効化
-add_theme_support( 'post-thumbnails' );
-
-
-// CSS を読み込む
-wp_enqueue_style( 'style', get_stylesheet_uri(), false, bin2hex(random_bytes(2)), 'all');
-
-// Google Fonts を読み込む
-wp_enqueue_style( 'googlefont', 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono&family=Work+Sans&family=Work+Sans:wght@300&display=swap', array(), null );
-
-// JavaScript を読み込む
-wp_enqueue_script( 'script', get_template_directory_uri() . '/files/js/script.js' , array ( 'jquery' ), bin2hex(random_bytes(2)), true);
-
-/*
-/* Gutenberg related
-*/
-
-add_theme_support( 'wp-block-styles' );		// デフォルトのブロックスタイル
-add_theme_support( 'align-wide' );		// 幅広の配置
-
-// 固定ページで抜粋を使えるようにする
-add_post_type_support( 'page', 'excerpt' );
-
-
-function mytheme_setup_theme_supported_features() {		// ブロックフォントサイズ
-    add_theme_support( 'editor-color-palette', array(
-        array(
-            'name'  => esc_attr__( 'dark blue', 'themeLangDomain' ),
-            'slug'  => 'dark-blue',
-            'color' => '#2d4059',
-        ),
-        array(
-            'name'  => esc_attr__( 'dark red', 'themeLangDomain' ),
-            'slug'  => 'dark-red',
-            'color' => '#bb2a2a',
-        ),
-        array(
-            'name'  => esc_attr__( 'black', 'themeLangDomain' ),
-            'slug'  => 'black',
-            'color' => '#333',
-        ),
-        array(
-            'name'  => esc_attr__( 'white', 'themeLangDomain' ),
-            'slug'  => 'white',
-            'color' => '#f3f3f3',
-        ),
-    ) );
-}
-add_action( 'after_setup_theme', 'mytheme_setup_theme_supported_features' );
-
-add_theme_support( 'disable-custom-colors' );		// ブロックカラーパレットでのカスタム色の無効化
-add_theme_support( 'disable-custom-gradients' );	// カスタムグラデーションの無効化
-
-add_action( 'after_setup_theme', 'mytheme_setup_theme_supported_features' );	// フォントサイズ
-add_theme_support( 'editor-font-sizes', array(
-    array(
-        'name' => __( 'Regular', 'themeLangDomain' ),
-        'size' => 16,
-        'slug' => 'regular'
-    ),
-) );
-
-add_theme_support('disable-custom-font-sizes');		// カスタムフォントサイズの無効化
-add_theme_support( 'custom-units', array() );		// カスタムユニットのサポート
-remove_theme_support( 'core-block-patterns' );		// デフォルトのブロックパターンの無効化
-
-add_theme_support( 'editor-styles' );	// エディタースタイル
-add_editor_style( 'style-editor.css' );	// エディタースタイルのエンキュー
-add_theme_support( 'responsive-embeds' );	// 埋め込みコンテンツのレスポンシブ化
-
-
-// ヘッダーのタイトル
-function headerTitle(): string {
-    if (is_page()) { 
-        return get_the_title();
-    }
-    if (is_home()) {
-        return "Knowledge Base";
-    }
-    if (is_archive()) {
-        return single_term_title();
-    }
-    if (is_404()) {
-        return "404 Not Found";
-    }
-}
-
-// ヘッダーの概要欄
-function headerDescription(): string {
-    $descriptionMessage = array(
-        'aaaaa',
-        'お知らせや身辺のことを綴っています。',
-        '404' => '<p>ページが見つかりませんでした。</p>'
-    );
-    
-    if (is_page()) {     // 固定ページの処理
-        return get_the_excerpt();
-
-    } elseif (is_home()) {     // ブログページの処理
-        return $descriptionMessage[1];
-        // なぜかブログ一覧のページだけ要約が表示できない
-
-    } elseif (is_archive()) {    // その他のページの処理
-        if (empty(term_description())) {
-            return '「' . single_term_title('', false) . '」が含まれる記事を表示しています。';
-
-        } else {
-            return term_description();
-        }
-
-    } elseif (is_404()) {    // 404の処理
-        return $descriptionMessage['404'];
-        
-    } elseif (is_front_page()) {
-        return $descriptionMessage[0];
-    }
-}
+// function disableSearch() {}
