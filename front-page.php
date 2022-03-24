@@ -67,7 +67,7 @@
 
 	<section class="separator">
 		<h2 class="content-title">Contact</h2>
-		<div id="contact" class="large-section-wrapper item-border works-item content-rules">
+		<div id="contact" class="large-section-wrapper item-border content-rules">
 			<p>Twitter (<a rel="noreferrer noopener" href="https://twitter.com/froggie3_" data-type="URL" data-id="https://twitter.com/froggie3_" target="_blank">@froggie3_</a>) のDM、またはE-mail アドレス<code>inquiry@yokkin.com</code>より直接ご連絡ください。</p>
 		</div>
 	</section>

@@ -34,7 +34,7 @@
             </div>
         <?php endif; ?>
     </div>
-    <?php echo '<section class="content-wrapper-normal content-rules separator">';?>
+    <?php echo '<section class="content-wrapper-normal content-rules">';?>
     <?php the_content();?>
     <?php echo '</section>';?>
     <?php

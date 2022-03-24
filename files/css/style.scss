@@ -144,6 +144,7 @@ input[type="submit"] {
 }
 
 .content-wrapper-normal {
+  margin-top: 2rem;
   @media screen and (min-width: 768px) {
     max-width: var(--medium-viewport-width);
   }
