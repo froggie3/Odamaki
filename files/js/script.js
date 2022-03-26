@@ -1,3 +1,5 @@
+'use strict';
+
 function getCurrentY() {
     let currentY = window.scrollY;
     const element = document.getElementById('debugInfo');
@@ -18,7 +20,7 @@ function navFunction() {
 
     if (hasBreakpoint) {
         // ブレークポイントのY座標値を取得して再代入
-        navPosition = document.getElementById('breakPointForNav').offsetTop - 64;
+        navPosition = document.getElementById('breakPointForNav').getBoundingClientRect().top + window.pageYOffset;
     }
 
     // デバッグ用    
@@ -37,9 +39,8 @@ function navFunction() {
     }
 
     // 現在の座標に応じてクラスを与える関数 (ブレークポイントとなるY座標の値, 操作を行いたい id 名, どんなクラスを与えるか)
-    byCurrentY(navPosition, 'topNav', 'hasBgColor');
+    byCurrentY(navPosition, 'topNav', 'has-bg-color');
 
-    byCurrentY(navPosition, 'toHead', 'isVisible');
 }
 
 window.addEventListener('DOMContentLoaded', function() {

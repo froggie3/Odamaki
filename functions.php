@@ -20,6 +20,10 @@ function odamaki_setup() {
         wp_enqueue_style( 'googlefont', 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono&display=swap', array(), null );
         wp_enqueue_style( 'yakuhanjp', 'https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css', array(), null );
     });
+    add_action( 'admin_enqueue_scripts', function(){
+        wp_enqueue_style( 'googlefont', 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono&display=swap', array(), null );
+        wp_enqueue_style( 'yakuhanjp', 'https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css', array(), null );
+    });
     register_nav_menus( array( 'headerNav' => 'on Header', 'footerNav' => 'on Footer', ) );     // ナビゲーションメニューを登録
     add_action( 'widgets_init', function() {
             register_sidebar (
@@ -149,9 +153,11 @@ function showPageInfo() {
             echo '<div class="jumbotron-page-info big text-shadow">' . $descr . '</div>';
         else:
             $title = get_the_title();
-            $descr = get_the_excerpt();
             echo '<h1 class="jumbotron-page-title">' . $title . '</h1>';
-            echo '<div class="jumbotron-page-info">' . $descr . '</div>';
+            if (has_excerpt()):
+                $descr = get_the_excerpt();
+                echo '<div class="jumbotron-page-info">' . $descr . '</div>';
+            endif;
         endif;
     endif;
     if (is_home() || is_single()):
@@ -161,7 +167,7 @@ function showPageInfo() {
         echo '<div class="jumbotron-page-info">' . $descr . '</div>';
     endif;
     if (is_archive()):
-        $title = single_term_title();
+        $title = single_term_title('', false);
 
         if (empty(term_description())):
             $descr = '「' . single_term_title( '', false) . '」が含まれる記事を表示しています。';
