@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<div class="jumbotron" style="background-image: url('<?php header_image(); ?>')">
+<div class="jumbotron">
 	<div class="jumbotron-background container container-big align-center">
         <?php showPageInfo('knowledgeBase'); ?>
 	</div>

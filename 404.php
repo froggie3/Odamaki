@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div class="jumbotron" style="background-image: url('<?php header_image(); ?>')">
+<div class="jumbotron">
 	<div class="jumbotron-background container container-big align-center">
 		<?php showPageInfo(); ?>
 	</div>

@@ -13,7 +13,7 @@
   --theme-anchor-color: #175199;
   --background-color: #fff;
   --default-font-family: "YakuHanJP", "Open Sans", "Hiragino Kaku Gothic Pro", "Meiryo", "MS PGothic", sans-serif;
-  --monospace-font-family: "Roboto Mono", "Consolas";
+  --monospace-font-family: "Roboto Mono", "Consolas", monospace;
   --container-width: 1140px;
   --medium-viewport-width: 768px;
   --large-viewport-width: 1024px;
@@ -217,7 +217,7 @@ input[type="submit"] {
   &::before {
     content: "";
     display: block;
-    background: url(files/img/favicon.png) no-repeat center top / cover;
+    background: url(files/img/website-logo.png) no-repeat center top / cover;
     width: 48px;
     height: 48px;
     font-size: 0;
@@ -270,6 +270,7 @@ input[type="submit"] {
 */
 
 .jumbotron {
+  background-image: url( 'files/img/header-default.jpg' );
   background-size: cover;
   background-attachment: fixed;
 }
@@ -418,9 +419,11 @@ ul.page-metadata {
 
   ul,
   ol {
-    padding: 0 0 0 2em;
-    margin: 1em 0;
-    line-height: 1.5;
+    padding: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1.25rem;
+    line-height: 1.75;
 
     li > ul,
     li > ol {
@@ -440,6 +443,7 @@ ul.page-metadata {
     margin: 1rem 0;
     font-family: var(--monospace-font-family);
     overflow: auto;
+    line-height: 1.5em;
   }
 
   ul > strong,
@@ -482,6 +486,7 @@ ul.page-metadata {
       padding-top: 0.85em;
       padding-bottom: 0.85em;
       border: none;
+      line-height: 1.75;
     }
   }
 }
@@ -603,6 +608,7 @@ h6 {
   @media screen and (min-width: 0px) {
     grid-row-gap: 1rem;
   }
+  line-height: 1.5;
 }
 
 .content-bottom {
@@ -1432,6 +1438,7 @@ div[class^="comment-form"] {
 #ez-toc-container {
   background: var(--background-color);
   border: 1px solid var(--border-color);
+  margin-top: 1em;
   margin-bottom: 1em;
   padding: 1rem;
   width: auto;

@@ -40,18 +40,11 @@ function odamaki_setup() {
     );       // ウィジェットを追加   
     add_theme_support( 'title-tag' );   // title タグを wp_head() 内に出力
     add_theme_support( 'post-formats', array ( 'aside', 'gallery', 'quote', 'image', 'video' ) );
-    add_theme_support( 'custom-header', array(
-        'default-image'          => get_template_directory_uri() . '/files/img/header-default.jpg',
-        'random-default'         => false,
-        'width'                  => 1920,
-        'height'                 => 200,
-        'flex-height'            => true,
-        'flex-width'             => true,
-        'default-text-color'     => '#fff',
-        'header-text'            => true,
-        'uploads'                => true,
-    ) );
     
+    add_action( 'wp_head', function() {
+        echo "<link rel='shortcut icon' href='" . get_stylesheet_directory_uri() . "/files/img/favicon/favicon.ico' />" . "\n";
+        
+    });
     add_theme_support( 'post-thumbnails' );     // アイキャッチ画像のサポートを有効化
 
     /* Gutenberg related */
@@ -68,6 +61,33 @@ function odamaki_setup() {
     add_filter( 'comment_text', 'wp_filter_nohtml_kses' );
     add_filter( 'comment_text_rss', 'wp_filter_nohtml_kses' );
     add_filter( 'comment_excerpt', 'wp_filter_nohtml_kses' );
+    add_filter( 'allowed_block_types_all', function() {
+        return array(
+            // テキスト
+            'core/paragraph',    // 段落
+            'core/heading',      // 見出し
+            'core/list',         // リスト
+            'core/quote',        // 引用
+            'core/preformatted', // 整形済み
+            'core/table',        // テーブル
+
+            // メディア
+            'core/image',      // 画像
+            'core/audio',      // 音声
+
+            // ウィジェット
+            'core/shortcode',       // ショートコード
+            'core/archives',        // アーカイブ
+            'core/categories',      // カテゴリー
+            'core/latest-comments', // 最新のコメント
+            'core/latest-posts',    // 最新の投稿
+            'core/page-list',       // 固定ページリスト
+
+            // 埋め込み
+            'core/embed',
+        );
+    });
+
     remove_action( 'wp_head', 'wp_resource_hints', 2, 99 ); 
     remove_action( 'wp_head', 'rest_output_link_wp_head' );
     remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
@@ -122,6 +142,12 @@ function odamaki_setup() {
         <?php
         }
     endif;
+
+    add_action( 'pre_get_posts', function ($query) {
+        if ( is_singular() || is_admin() ) : return;
+        endif;
+        $query->set('has_password', false);
+    });
 }
 endif;  // odamaki_setup
 add_action( 'after_setup_theme', 'odamaki_setup' );

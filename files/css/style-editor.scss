@@ -127,6 +127,7 @@ table {
     tr {
       border-style: solid;
       border-width: 0 0 1px 0;
+      line-height: 1.75;
       border-color: var(--theme-color-white);
     }
   }
@@ -146,7 +147,7 @@ ul,
 ol {
   padding: 0 0 0 2em;
   margin: 1em 0;
-  line-height: 1.5;
+  line-height: 1.75;
 
   li > ul,
   li > ol {

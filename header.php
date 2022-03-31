@@ -11,29 +11,31 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="<?php echo get_permalink(); ?>" />
 <?php
+if (is_attachment()): echo "<meta name=\"robots\" content=\"noindex\">";
+endif;
 $image = function() {
     if (is_single() || is_page()):
         if (has_post_thumbnail()) : 
             if (have_posts()) : while ( have_posts() ) :
                 return get_the_post_thumbnail_url();
             endwhile; endif;
-        else : return get_template_directory_uri() . '/files/img/default.png';
+        else : return get_template_directory_uri() . "/files/img/default.png";
         endif;
-    else: return get_template_directory_uri() . '/files/img/default.png';
+    else: return get_template_directory_uri() . "/files/img/default.png";
     endif;
 };
-echo '<meta property="og:image" content="' . $image() . '" />';
+echo "<meta property=\"og:image\" content=\"" . $image() . "\" />" . "\n";
 $description = function() {
 
     global $descriptionMessage;
 
-    if (is_home()): return strip_tags($descriptionMessage['home']['description']);
+    if (is_home()): return strip_tags($descriptionMessage["home"]["description"]);
     elseif (is_single()): return get_the_excerpt();
-    else: return strip_tags($descriptionMessage['front']['description']);
+    else: return strip_tags($descriptionMessage["front"]["description"]);
     endif;
 };
-echo '<meta property="og:description" content="' . $description() . '" />';
-echo '<meta name="description" content="' . $description() . '" />';
+echo "<meta property=\"og:description\" content=\"" . $description() . "\" />\n";
+echo "<meta name=\"description\" content=\"" . $description() . "\" />";
 ?>
 
 <?php wp_head(); ?>
@@ -57,4 +59,5 @@ echo '<meta name="description" content="' . $description() . '" />';
             ) );
         endif;
         ?>
+    </div>
 </nav>
