@@ -28,6 +28,7 @@ body {
   color: var(--theme-color-black);
   line-height: 1;
   font-size: 0.9em;
+
   @media screen and (min-width: 768px) {
     font-size: 1em;
     line-height: 1;
@@ -39,10 +40,11 @@ a {
   text-decoration: none;
   transition-duration: var(--theme-common-transition-duration);
   line-break: anywhere;
-}
 
-a:hover {
-  text-decoration-line: underline;
+  &:hover,
+  &:focus {
+    text-decoration-line: underline;
+  }
 }
 
 p {
@@ -52,7 +54,9 @@ p {
   @media screen and (min-width: 768px) {
     line-height: 2;
   }
-  & + & {
+
+  &+&,
+  &:only-child {
     margin: 1em 0;
   }
 }
@@ -88,6 +92,7 @@ textarea {
   transition: all var(--theme-common-transition-duration);
   animation-timing-function: ease;
 
+  &:hover,
   &:focus {
     background-color: var(--theme-color-white);
     border-bottom: 2px solid var(--theme-color-black);
@@ -99,6 +104,7 @@ input[type="text"] {
   transition: all var(--theme-common-transition-duration);
   animation-timing-function: ease;
 
+  &:hover,
   &:focus {
     background-color: var(--theme-color-white);
     border-bottom: 2px solid var(--theme-color-black);
@@ -117,7 +123,8 @@ input[type="submit"] {
   text-decoration: none;
   transition: all var(--theme-common-transition-duration);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--theme-color-blue);
     background-color: var(--theme-color-white);
     border: var(--theme-color-blue) solid 1px;
@@ -145,6 +152,7 @@ input[type="submit"] {
 
 .content-wrapper-normal {
   margin-top: 2rem;
+
   @media screen and (min-width: 768px) {
     max-width: var(--medium-viewport-width);
   }
@@ -154,6 +162,7 @@ input[type="submit"] {
   margin: 0;
   padding: 0;
 }
+
 .wp-block-group__inner-container h2,
 .wp-block-group__inner-container h3 {
   font-weight: normal;
@@ -208,7 +217,7 @@ input[type="submit"] {
     font-size: 0.8em;
   }
 
-  &:hover {
+  &:hover, &:focus {
     background-color: var(--background-color);
     color: var(--theme-color-blue);
     text-decoration-line: none;
@@ -235,6 +244,7 @@ input[type="submit"] {
   font-size: 1em;
   list-style: none;
   display: flex;
+
   @media screen and (min-width: 768px) {
     width: auto;
   }
@@ -256,7 +266,8 @@ input[type="submit"] {
         content: ">";
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--background-color);
         color: var(--theme-color-blue);
       }
@@ -270,7 +281,7 @@ input[type="submit"] {
 */
 
 .jumbotron {
-  background-image: url( 'files/img/header-default.jpg' );
+  background-image: url('files/img/header-default.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -403,6 +414,7 @@ ul.page-metadata {
 
 .content-rules {
   p {
+
     code,
     kbd,
     samp {
@@ -425,8 +437,8 @@ ul.page-metadata {
     margin-left: 1.25rem;
     line-height: 1.75;
 
-    li > ul,
-    li > ol {
+    li>ul,
+    li>ol {
       margin: 0;
     }
   }
@@ -446,23 +458,22 @@ ul.page-metadata {
     line-height: 1.5em;
   }
 
-  ul > strong,
-  ol > strong {
+  ul>strong,
+  ol>strong {
     font-weight: bold;
   }
 
   mark {
-    background: linear-gradient(
-        0deg,
+    background: linear-gradient(0deg,
         var(--theme-color-yellow),
-        var(--theme-color-yellow)
-      )
-      no-repeat;
+        var(--theme-color-yellow)) no-repeat;
     background-size: 100% 33%;
     background-position: bottom;
   }
+
   table {
     font-family: var(--default-font-family);
+
     th {
       padding-top: 0.85em;
       padding-bottom: 0.85em;
@@ -481,6 +492,7 @@ ul.page-metadata {
         border-color: #eee;
       }
     }
+
     td,
     th {
       padding-top: 0.85em;
@@ -605,9 +617,11 @@ h6 {
   margin: 0 auto;
   max-width: var(--medium-viewport-width);
   grid-template-columns: 1fr;
+
   @media screen and (min-width: 0px) {
     grid-row-gap: 1rem;
   }
+
   line-height: 1.5;
 }
 
@@ -639,7 +653,7 @@ div[class^="post-metadata"] {
   margin: 0 0.25em;
   width: 2em !important;
 
-  &:hover {
+  &:hover, &:focus {
     filter: opacity(1);
   }
 }
@@ -674,7 +688,8 @@ div[class^="post-metadata"] {
     color: var(--theme-color-white);
     transition-duration: var(--theme-common-transition-duration);
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: var(--theme-color-pink);
     }
   }
@@ -697,7 +712,7 @@ div[class^="post-metadata"] {
       }
     }
 
-    * + * {
+    *+* {
       margin-left: 2em;
     }
   }
@@ -767,7 +782,7 @@ div[class^="post-metadata"] {
 /* Front content right-side bottom (follow-link)
 */
 
-#followmelink {
+.social-links {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 3rem);
@@ -790,15 +805,16 @@ div[class^="post-metadata"] {
     transition-duration: var(--theme-common-transition-duration);
     list-style: none;
 
-    &:hover {
-      background-color: var(--border-color);
-    }
-
     a {
       display: block;
       position: relative;
       width: 100%;
       height: 100%;
+
+      &:hover,
+      &:focus {
+        background-color: var(--border-color);
+      }
 
       svg {
         position: absolute;
@@ -842,8 +858,6 @@ div[class^="post-metadata"] {
   *[class^="nav-"] a {
     transition-duration: var(--theme-common-transition-duration);
     margin: 0 0.5rem;
-    &:hover {
-    }
   }
 
   .current {
@@ -870,6 +884,7 @@ div[class^="post-metadata"] {
   transition-duration: var(--theme-common-transition-duration);
   text-decoration: none;
 
+  &:focus:not(.current, .dots),
   &:hover:not(.current, .dots) {
     color: var(--theme-color-white);
     background: var(--theme-color-blue);
@@ -914,7 +929,8 @@ div[class^="post-metadata"] {
     color: var(--theme-color-black);
     text-decoration: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
       border: 1px solid #a2a2a2;
     }
   }
@@ -931,7 +947,8 @@ div[class^="post-metadata"] {
   border: 1px solid var(--border-color);
   transition-duration: var(--theme-common-transition-duration);
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 0.5;
     text-decoration-line: none;
   }
@@ -1010,8 +1027,7 @@ div[class^="post-metadata"] {
   }
 }
 
-.large-section-wrapper-a {
-}
+.large-section-wrapper-a {}
 
 .large-section-wrapper-b {
   justify-content: center;
@@ -1122,8 +1138,8 @@ div[class^="post-metadata"] {
 .works {
   padding-bottom: 1em;
   grid-gap: 2rem;
-  @media screen and (min-width: 768px) {
-  }
+
+  @media screen and (min-width: 768px) {}
 }
 
 @media screen and (hover: hover) {
@@ -1136,11 +1152,12 @@ div[class^="post-metadata"] {
     box-shadow: var(--theme-shadow);
   }
 }
+
 /*
 /* Individuals
 */
 
-#works > div > p {
+#works>div>p {
   margin: 0px;
   font-size: 0.9em;
   padding: 0 16px;
@@ -1151,7 +1168,7 @@ div[class^="post-metadata"] {
   }
 }
 
-#whoami > div > div > p {
+#whoami>div>div>p {
   margin: 0 0 0.5rem;
 }
 
@@ -1210,12 +1227,15 @@ div[class^="post-metadata"] {
   box-shadow: var(--theme-shadow);
 
   @media (hover: hover) {
-    &:hover {
+
+    &:hover,
+    &:focus {
       background-color: var(--background-color);
       filter: opacity(1);
     }
 
-    &:hover svg {
+    &:hover svg,
+    &:focus svg {
       fill: var(--theme-color-blue);
     }
   }
@@ -1291,6 +1311,7 @@ div[class^="post-metadata"] {
 
 .two-columns {
   grid-template-columns: repeat(1, 1fr);
+
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1308,7 +1329,8 @@ div[class^="post-metadata"] {
     display: block;
     transition-duration: var(--theme-common-transition-duration);
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: var(--background-color);
       color: var(--theme-color-blue);
     }
@@ -1335,7 +1357,7 @@ div[class^="post-metadata"] {
 .comment-respond {
   margin-top: 2rem;
 
-  @media screen and (min-width: 768px ) {
+  @media screen and (min-width: 768px) {
     padding: 2rem;
     border: 1px solid var(--border-color);
   }
@@ -1377,7 +1399,8 @@ div[class^="comment-form"] {
   text-decoration: none;
   font-size: 0.8rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration-line: none;
     border: 1px solid var(--theme-color-red);
     background-color: var(--theme-color-white);
@@ -1397,7 +1420,8 @@ div[class^="comment-form"] {
   text-decoration: none;
   font-size: 0.8rem;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration-line: none;
     border: 1px solid var(--theme-color-blue);
     background-color: var(--theme-color-white);
@@ -1452,6 +1476,7 @@ div[class^="comment-form"] {
 :root:root .ez-toc-list {
   padding: 0;
   margin: 1rem 0;
+
   * {
     list-style: none;
   }

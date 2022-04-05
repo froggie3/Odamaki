@@ -1,9 +1,0 @@
-.idea
-.editorconfig
-.gitignore
-.DS_Store
-images/
-node_modules/
-sample/
-tsconfig.json
-webpack.config.js

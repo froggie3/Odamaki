@@ -47,6 +47,13 @@ function odamaki_setup() {
     });
     add_theme_support( 'post-thumbnails' );     // アイキャッチ画像のサポートを有効化
 
+    add_action( 'template_redirect', function() {
+        if (is_author()) :
+            wp_redirect(home_url());
+            exit();
+        endif;
+    });
+
     /* Gutenberg related */
 
     add_theme_support( 'wp-block-styles' );		// デフォルトのブロックスタイル
