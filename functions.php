@@ -12,7 +12,7 @@ function odamaki_setup() {
     add_action( 'wp_enqueue_scripts', function(){
         if ( ! is_admin() ) :
             wp_enqueue_style( 'ress', get_template_directory_uri() . '/files/css/ress.min.css', false, false, 'all' );
-            wp_enqueue_style( 'style', get_template_directory_uri() . '/style.min.css', false, false, 'all' );
+            wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', false, false, 'all' );
             wp_enqueue_script( 'script', get_template_directory_uri() . '/files/js/script.js' , array(), false, true);
             wp_enqueue_script( 'smooth-scroll', 'https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0/dist/smooth-scroll.polyfills.min.js' , array(), false, true);
             wp_add_inline_script( 'init-smooth-scroll', 'var scroll = new SmoothScroll(\"a[href*="#"]\");', 'after' );

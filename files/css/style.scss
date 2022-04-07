@@ -1,3 +1,13 @@
+/*!
+  Theme Name: Odamaki
+  Theme URL: https://github.com/froggie3/Odamaki
+  Author: Yokkin
+  Author URI: https://yokkin.com/
+  Description: Odamaki is a dedicated WordPress theme for yokkin.com, which has been kept developed or maintained since Feb 2021.
+  Version: 1.0
+  Text Domain: odamaki
+*/
+
 @mixin margin-top {
   padding-top: 4rem;
 }
@@ -217,7 +227,8 @@ input[type="submit"] {
     font-size: 0.8em;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: var(--background-color);
     color: var(--theme-color-blue);
     text-decoration-line: none;
@@ -623,6 +634,11 @@ h6 {
   }
 
   line-height: 1.5;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .content-bottom {
@@ -653,7 +669,8 @@ div[class^="post-metadata"] {
   margin: 0 0.25em;
   width: 2em !important;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     filter: opacity(1);
   }
 }
@@ -1078,6 +1095,11 @@ div[class^="post-metadata"] {
   margin: 0rem 0 1rem;
   display: flex;
   justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .large {
