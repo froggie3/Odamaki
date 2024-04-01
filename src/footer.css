@@ -1,0 +1,126 @@
+/*
+ * Footer
+ */
+
+.odamaki-footer-container {
+  background-color: var(--wp--preset--color--blue);
+  color: var(--wp--preset--color--white);
+  font-family: var(--wp--preset--font-family--monospace);
+  margin-bottom: calc(-1 * var(--theme-common-space-2rem));
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  a {
+    color: var(--wp--preset--color--white);
+
+    &:hover,
+    &:focus {
+      color: var(--wp--preset--color--red-brighter);
+    }
+
+    &:active {
+      color: var(--wp--preset--color--red-brighter-2);
+    }
+  }
+
+  & > * + * {
+    margin-top: 2rem;
+  }
+}
+
+.odamaki-footer {
+  display: grid;
+  grid-gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-column-size), 1fr));
+  width: min(100%, var(--wp--style--global--wide-size));
+  margin-inline: auto;
+
+  ul ul,
+  ol ol {
+    padding-left: 1em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: normal;
+    line-height: revert;
+  }
+
+  ul + ul {
+    margin-top: 2rem;
+  }
+}
+
+.odamaki-footer-item {
+  & > * + * {
+    margin-bottom: 1rem;
+  }
+
+  .wp-block-heading + ul {
+    line-height: var(--theme-common-line-height);
+
+    li {
+      .children {
+        list-style: inherit;
+      }
+
+      &::before {
+        content: "#";
+        padding: 0 0.5em 0 0;
+      }
+    }
+  }
+
+  .wp-block-search__input {
+    color: var(--wp--preset--color--white);
+  }
+}
+
+/*
+ * The bottomest section of footer
+ */
+
+.odamaki-copyright {
+  display: flex;
+  font-size: 0.9em;
+  width: min(100%, var(--wp--style--global--wide-size));
+  margin-inline: auto;
+
+  flex-direction: column;
+  place-items: center;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.odamaki-copyright-item {
+  display: inherit;
+
+  li {
+    &::before {
+      content: "#";
+    }
+  }
+}
+
+.odamaki-copyright > * + * {
+  margin-top: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .odamaki-copyright > * + * {
+    margin-top: 0;
+  }
+}
+
+.odamaki-copyright-menu {
+  @media screen and (min-width: 768px) {
+    place-content: end;
+  }
+
+  .odamaki-copyright-menu-item + .odamaki-copyright-menu-item {
+    margin-left: 1rem;
+  }
+}

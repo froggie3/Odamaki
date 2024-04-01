@@ -1,0 +1,13 @@
+<a class="odamaki-navigation-item odamaki-navigation-item-img-link"
+   href="{{ site.url }}">
+    <span>{{ site.name }}</span>
+</a>
+<ul class="odamaki-navigation-item odamaki-navigation-menu">
+    {% for item in primary_menu.items %}
+        <li class="odamaki-navigation-menu-item {{ item.classes|join(" ") }}">
+            <a class="odamaki-navigation-menu-item-link" href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' : '' }}>
+                {{ item.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

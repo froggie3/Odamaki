@@ -1,0 +1,6 @@
+{% extends 'base/term_base.twig' %}
+{% block archive_title %}{{ term.title }}{% endblock %}
+{% block archive_description %}
+    <p>このサイトには、{{ posts|length }}件の{{ term.title }}に関する記事があります。</p>
+    {% if term.description is not empty %}{{ term.description }}{% endif %}
+{% endblock %}

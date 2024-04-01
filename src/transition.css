@@ -1,0 +1,70 @@
+/* Change self color essences */
+.to-header-button,
+.odamaki-navigation-menu li a,
+#commentform input[type="submit"],
+.comment-is-logged-in,
+#cancel-comment-reply-link,
+.comment-reply-link,
+.odamaki-navigation-item-img-link,
+.prev,
+.page-numbers,
+.next,
+.post-tags-list a,#searchsubmit {
+    box-sizing: border-box;
+    place-items: center;
+    text-align: center;
+    transition: var(--theme-button-transition);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration-line: none;
+    }
+}
+
+/* BLUE */
+.to-header-button,
+.odamaki-navigation-menu li a,
+#commentform input[type="submit"],
+.comment-reply-link,
+.odamaki-navigation-item-img-link,
+.prev,
+.page-numbers,
+.next,
+.post-tags-list a,#searchsubmit {
+    background-color: var(--wp--preset--color--blue);
+    /* border: var(--wp--preset--color--blue) solid 1px; */
+    /* outline: var(--wp--preset--color--blue) solid 1px ; */
+    color: var(--wp--preset--color--white);
+
+    &:hover:not(.current, .dots),
+    &:focus:not(.current, .dots) {
+        background-color: var(--wp--preset--color--white);
+        /* border: var(--wp--preset--color--blue) solid 1px; */
+        color: var(--wp--preset--color--blue);
+    }
+
+    &:hover > *,
+    &:focus > * {
+        fill: var(--wp--preset--color--blue);
+    }
+}
+
+/* RED */
+.comment-is-logged-in,
+#cancel-comment-reply-link {
+    background-color: var(--wp--preset--color--red);
+    /* border: 1px solid var(--wp--preset--color--red); */
+    color: var(--wp--preset--color--white);
+
+    &:hover:not(.current, .dots),
+    &:focus:not(.current, .dots) {
+        background-color: var(--wp--preset--color--white);
+        /* border: var(--wp--preset--color--red) solid 1px; */
+        color: var(--wp--preset--color--red);
+    }
+
+    &:hover > *,
+    &:focus > * {
+        fill: var(--wp--preset--color--blue);
+    }
+}

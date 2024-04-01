@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js no-svg" {{ site.language_attributes|raw }} prefix="og: https://ogp.me/ns#">
+    <head>
+        {% block head %}
+            <meta charset="{{ site.charset }}">
+            <meta name="theme-color" content="#2d4059">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:creator" content="@froggie3_" />
+            <meta name="twitter:site" content="@froggie3_" />
+            <meta name="viewport"
+                  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta property="og:locale" content="ja_JP" />
+            <meta property="og:locale:alternate" content="en_US" />
+            <meta property="og:site_name" content="{{ site.name }}">
+            <meta property="og:title" content="{{ site.open_graph_title }}" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="{{ post.link }}" />
+            <meta property="og:image"
+                  content="{{ post.thumbnail.src ?: theme.link ~ '/files/img/default.png' }}" />
+            <meta name="description" content="{{ site.meta_description }}" />
+            <meta property="og:description" content="{{ site.meta_description }}" />
+            {{ fn("wp_head") }}
+        {% endblock %}
+    </head>
+    <body class="{{ body_class }}" data-template="base.twig">
+        {{ fn("wp_body_open") }}
+        <a class="skip-link screen-reader-text" href="#content">{{ _e("Skip to content") }}</a>
+        <nav class="odamaki-navigation-container">
+            {% block navigation %}
+                <div class="odamaki-navigation">{% include('navigation.twig') %}</div>
+            {% endblock %}
+        </nav>
+        {# <div class="to-header-button-container"> </div> #}
+        <button id="toHead" class="to-header-button" title="ページの最上部へ戻る" type="button">
+            <svg class="icon-arrow"
+                 width="24"
+                 height="24"
+                 version="1.1"
+                 viewBox="0 0 6.35 6.35"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="m3.175 2.7781 0.79375-0.79375 2.3812 2.3813-0.79375 0.79375zm-3.175 1.5875 3.175-3.175 0.79375 0.79375-3.175 3.175z" />
+            </svg>
+        </button>
+        {% block header %}{% endblock %}
+        {% block content %}{% endblock %}
+        <footer class="odamaki-footer-container">
+            {% block footer %}
+                <nav class="odamaki-copyright">
+                    {% include('copyright.twig') %}
+                </nav>
+            {% endblock %}
+        </footer>
+        {{ fn("wp_footer") }}
+    </body>
+</html>

@@ -1,0 +1,94 @@
+/*
+ * Navigation stuff
+ */
+
+.odamaki-navigation-container {
+    box-sizing: border-box;
+    padding: revert;
+    overflow: hidden;
+    position: absolute;
+    /* position: sticky; */
+    /* top: 0px; */
+    width: var(--theme-width-full);
+    z-index: var(--defined-z-index-layer-2);
+}
+
+.odamaki-navigation {
+    display: grid;
+    grid-template-columns: minmax(min-content, min-content) 1fr;
+    grid-template-rows: calc(2 * var(--theme-common-space-2rem));
+    justify-items: left;
+    overflow-x: auto;
+    z-index: var(--defined-z-index-layer-3);
+}
+
+.has-bg-color[class^="top-navigation"] {
+    background-color: var(--wp--preset--color--blue);
+}
+
+.odamaki-navigation-item-img-link {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    font-family: var(--wp--preset--font-family--monospace);
+    height: 100%;
+    line-break: auto;
+    padding-left: 0.5rem;
+    padding-right: 0;
+
+    @media screen and (min-width: 768px) {
+        padding-right: 0.5rem;
+    }
+
+    &::before {
+        background: url(../files/img/website-logo.png) no-repeat center top /
+            cover;
+        border-radius: 999px;
+        content: "";
+        display: block;
+        font-size: 0;
+        height: 48px;
+        margin-right: 10px;
+        width: 48px;
+    }
+
+    span {
+        display: none;
+
+        @media screen and (min-width: 768px) {
+            display: inherit;
+            padding-right: 0.5rem;
+            font-size: 0.9em;
+        }
+    }
+}
+
+.odamaki-navigation-menu {
+    display: flex;
+    font-family: var(--wp--preset--font-family--monospace);
+    font-size: 1em;
+    height: 100%;
+
+    margin: 0 0 0 auto;
+    white-space: nowrap;
+
+    @media screen and (min-width: 768px) {
+        width: auto;
+    }
+
+    li {
+        height: 100%;
+
+        a {
+            display: flex;
+            height: 100%;
+            padding: 0 1rem 0 0;
+            text-decoration: none;
+
+            &::before {
+                padding: 0 1rem 0 1rem;
+                content: ">";
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{% extends 'index.twig' %}
+{% block term_description %}
+    <main id="content" class="odamaki-content-container-wide">
+        <section class="content-rules">
+            <h1 class="content-title">
+                {% block archive_title %}{% endblock %}
+            </h1>
+            {% block archive_description %}{% endblock %}
+        </section>
+    </main>
+{% endblock %}

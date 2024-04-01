@@ -1,0 +1,43 @@
+#!/bin/bash
+
+HOSTNAME=
+USER=
+PASSWORD=
+BUILD_DIR=../.build
+LOCAL_DIR=..
+REMOTE_DIR=
+
+mkdir -p $BUILD_DIR
+
+find . \( \
+    -path "./files/others" -or \
+    -path "./node_modules" -or \
+    -path "./src" -or \
+    -path "./.editorconfig" -or \
+    -path "./.env" -or \
+    -path "./.gitignore" -or \
+    -path "./.prettierignore" -or \
+    -path "./composer.json" -or \
+    -path "./composer.lock" -or \
+    -path "./odamaki.png" -or \
+    -path "./package-lock.json" -or \
+    -path "./package.json" -or \
+    -path "./README.md" -or \
+    -path "./sync.sh" -or \
+    -path "./webpack.config.js" \
+    \) \
+    -prune -or -type f \
+    -print | while IFS= read -r file; do
+    cp -r --parents $file $BUILD_DIR
+done
+
+lftp \
+    -u $USER,$PASSWORD $HOSTNAME << EOF
+    set ftp:ssl-force on
+    set ftp:ssl-protect-data on
+    set ssl:verify-certificate off
+    set cmd:status-interval 0.017
+    mirror -e -P 10 -R $LOCAL_DIR/$BUILD_DIR $REMOTE_DIR
+EOF
+
+rm -rf $BUILD_DIR

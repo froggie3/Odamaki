@@ -1,0 +1,27 @@
+#ez-toc-container {
+    background: var(--wp--preset--color--background-color);
+    border: 1px solid var(--wp--preset--color--border-color);
+    box-sizing: border-box;
+    margin: 1em 0;
+    padding: 1em;
+    z-index: var(--defined-z-index-layer-1);
+
+    .ez-toc-title + * {
+        margin-top: 1em;
+    }
+
+    summary {
+        user-select: none;
+        cursor: pointer;
+    }
+
+    .ez-toc-list {
+        padding: revert;
+        line-height: var(--theme-common-line-height);
+        padding-left: 1.5em;
+
+        li {
+            list-style: revert;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<ul class="pages">
+    {% if posts.pagination.prev %}
+        <li>
+            <a href="{{ posts.pagination.prev.link }}"
+            class="prev {{ posts.pagination.prev.link|length ? '' : 'invisible' }}">«</a>
+        </li>
+    {% endif %}
+    {% if posts.pagination.next %}
+        <li>
+            <a href="{{ posts.pagination.next.link }}"
+            class="next {{ posts.pagination.next.link|length ? '' : 'invisible' }}">»</a>
+        </li>
+    {% endif %}
+</ul>

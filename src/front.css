@@ -1,0 +1,167 @@
+/*
+ * Front Page
+ */
+
+:root {
+    --wallpaper-container-height: 45vmax;
+}
+
+.front-wallpaper-container {
+    padding: revert;
+    overflow-x: clip;
+    --rotate: -7deg;
+    --width: calc(1.2 * var(--theme-width-full));
+
+    .front-wallpaper-container-rotate {
+        transform: rotate(var(--rotate));
+        transform-origin: bottom left;
+
+        .front-wallpaper {
+            display: flex;
+            height: var(--wallpaper-container-height);
+            width: var(--width);
+            background-color: transparent;
+
+            /* Background with color */
+            &::before {
+                background-color: var(--wp--preset--color--blue);
+                content: "";
+                height: var(--wallpaper-container-height);
+                position: absolute;
+                width: var(--width);
+            }
+        }
+
+        /* Froggy icon tilted */
+        .frog {
+            background-image: url("../files/img/me-face-half.png");
+            background-size: contain;
+            background-position: 90%;
+            content: "";
+            height: 10vw;
+            width: auto;
+        }
+    }
+
+    .front-wallpaper-inner {
+        display: flex;
+        padding: clamp(1rem, 2vw, 3rem);
+        color: #fff;
+        position: absolute;
+        width: var(--theme-width-full);
+        height: var(--wallpaper-container-height);
+        flex-direction: column;
+        justify-content: center;
+        text-shadow: var(--wp--preset--shadow--deep);
+
+        .front-wallpaper-header {
+            font-weight: bold;
+            margin-bottom: clamp(1rem, 1vw, 1rem);
+            font-size: clamp(1em, 5vw, 3.5em);
+            z-index: var(--defined-z-index-layer-1);
+        }
+
+        .front-wallpaper-content {
+            font-size: clamp(0.75em, 2.5vw, 1.5em);
+            line-height: 1.75;
+            z-index: var(--defined-z-index-layer-1);
+        }
+    }
+}
+
+/*
+ * Profile, contact, works and etc.
+ */
+
+.front-section {
+    display: grid;
+}
+
+.front-section-content {
+    margin: 0 0 24px;
+    margin: 2rem 0;
+
+    @media screen and (min-width: 768px) {
+        padding: 2rem;
+    }
+}
+
+.front-section {
+    & > .front-section-title {
+        display: inline-block;
+        font: normal max(1.5em, 2vw) / 1
+            var(--wp--preset--font-family--monospace);
+        width: max-content;
+        margin-inline: auto;
+
+        &::after {
+            background-color: var(--wp--preset--color--red);
+            content: "";
+            display: block;
+            height: 1px;
+            margin: 0.5rem 0 0 0;
+            width: auto;
+        }
+    }
+
+    & > * + * {
+        margin-top: var(--theme-common-space-2rem);
+    }
+}
+
+/*
+ * Works
+ */
+
+.front-section-works {
+    display: grid;
+    grid-auto-flow: dense;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(var(--grid-column-size), 1fr)
+    );
+    padding-bottom: 1em;
+}
+
+.front-section-works-item {
+    box-sizing: border-box;
+    --side-padding: clamp(1rem, 2vw, 2rem);
+
+    h2 {
+        border-left: 3px solid var(--wp--preset--color--blue);
+        display: block;
+        font-family: var(--wp--preset--font-family--monospace);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-weight: normal;
+        margin: 0 0 0.5em;
+        padding: 1rem 0 1rem calc(var(--side-padding) - 3px);
+        line-height: revert;
+    }
+
+    .front-section-works-item.large {
+        grid-column: 1;
+    }
+
+    p {
+        font-size: clamp(0.9em, 0.9vw, 1em);
+        margin: 0;
+        padding-left: calc(var(--side-padding));
+        padding-right: calc(var(--side-padding));
+    }
+
+    a {
+        transition: opacity var(--theme-common-transition-duration) ease-out;
+        overflow-wrap: break-word;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .front-section-works-item.large {
+        grid-column: span 2;
+    }
+}

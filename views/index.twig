@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+{% block content %}
+    {% include('header.twig') %}
+    {% block term_description %}{% endblock %}
+    <main id="content" class="odamaki-content-container-wide">
+        {% if posts is not empty %}
+            {% block posts_found %}{% endblock %}
+            {% include('partial/pagination.twig') %}
+            <div class="entries odamaki-entries">
+                {% for post in posts %}
+                    {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+                {% endfor %}
+            </div>
+            <div class="content-bottom">{% include('partial/pagination.twig') %}</div>
+        {% endif %}
+    </main>
+{% endblock %}
+{% block footer %}
+    {% include("footer.twig") %}
+    {{ parent() }}
+{% endblock %}

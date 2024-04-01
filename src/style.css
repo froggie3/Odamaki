@@ -1,0 +1,90 @@
+body {
+    background-color: var(--wp--preset--color--background-color);
+    color: var(--wp--preset--color--black);
+    font-family: var(--wp--preset--font-family--sans-serif);
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline-width: revert;
+}
+
+body > * + * {
+    margin-bottom: var(--theme-common-space-2rem);
+    padding: 0 1rem;
+}
+
+body > #wpadminbar {
+    margin-bottom: revert;
+    padding: revert;
+}
+
+li {
+    list-style: none;
+}
+
+.wp-block-image.aligncenter {
+    margin-inline: auto;
+}
+
+/*
+ * Define containers.
+ */
+
+.odamaki-content-container {
+    margin-inline: auto;
+    max-width: min(100%, var(--wp--style--global--content-size));
+}
+
+.odamaki-content-container-wide {
+    margin-inline: auto;
+    box-sizing: border-box;
+    width: min(100%, var(--wp--style--global--wide-size));
+
+    & > * + * {
+        margin-top: 2rem;
+    }
+}
+
+.content-title {
+    display: inline-block;
+    font: normal 1.5em/1 var(--wp--preset--font-family--monospace);
+
+    &::after {
+        background-color: var(--wp--preset--color--red);
+        content: "";
+        display: block;
+        height: 1px;
+        margin: 0.5rem 0 0 0;
+        width: auto;
+    }
+}
+
+.to-header-button {
+    aspect-ratio: 1;
+    border-radius: 999px;
+    display: grid;
+    line-height: 0;
+    margin: revert;
+    padding: 0.1rem;
+    position: fixed;
+    box-shadow: var(--wp--preset--shadow--natural);
+    z-index: var(--defined-z-index-layer-1);
+    visibility: hidden;
+
+    --size: 3rem;
+
+    bottom: calc(var(--size) / 2);
+    right: calc(var(--size) / 2);
+
+    height: var(--size);
+    width: var(--size);
+
+    .icon-arrow {
+        width: calc(var(--size) / 4);
+        fill: var(--wp--preset--color--white);
+    }
+}

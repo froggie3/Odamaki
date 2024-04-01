@@ -1,0 +1,30 @@
+{% extends 'base.twig' %}
+{% block content %}
+    {{ include('partial/cover.twig', {
+        header: post.title,
+        content: post.content,
+        classes: post.post_class() 
+    }) }}
+    <main id="content">
+        <div class="odamaki-content-container">
+            {% for profile in profiles %}
+                <section class="front-section">
+                    <h1 id="whoami" class="front-section-title">{{ profile.title }}</h1>
+                    <div class="{{ profile.post_class("front-section-content content-rules") }}">{{ profile.content }}</div>
+                </section>
+            {% endfor %}
+        </div>
+        <div class="odamaki-content-container-wide">
+            <section class="front-section">
+                <h1 class="front-section-title">Works</h1>
+                <div id="works" class="front-section-works">
+                    {% for work in works %}
+                        <div class="{{ work.post_class("front-section-works-item") }} {{ work.meta("is_large") ? ' large' : '' }}">
+                            {{ work.content }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}

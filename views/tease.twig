@@ -1,0 +1,18 @@
+<div class="entries-item">
+    <div class="entries-item-thumbnail-wrapper">
+        {% if post.category() %}<div class="entries-item-thumbnail-overlap">{{ post.category.name }}</div>{% endif %}
+        <img class="entries-item-thumbnail"
+             alt="「{{ post.title }}」のサムネイル画像"
+             src="{{ post.thumbnail ? post.thumbnail.src : theme.link ~ '/files/img/empty-thumbnail.png' }}"
+             width="1200"
+             height="630" />
+    </div>
+    <ul class="entry-metadata">
+        <li class="entry-metadata-item">
+            {% set is_modified = post.date != post.modified_date %}
+            <span>{{ is_modified ? post.date ~ ' 執筆' : post.modified_date ~ ' 改稿' }}</span>
+        </li>
+    </ul>
+    <h3 class="entries-item-excerpt-title">{{ post.title }}</h3>
+    <p class="entries-item-excerpt">{{ post.excerpt().read_more('続きを読む').strip(true) }}</p>
+</div>

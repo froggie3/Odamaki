@@ -1,0 +1,37 @@
+/*
+ * Post navigation
+ */
+
+.pages {
+  display: grid;
+  justify-content: center;
+  /* margin: 2rem 0; */
+  grid-template-columns: var(--size);
+
+  width: var(--theme-width-full);
+
+  li {
+    --size: 3rem;
+    height: var(--size);
+    width: var(--size);
+    font-family: var(--wp--preset--font-family--monospace);
+    justify-content: center;
+    /* margin: 0.25em; */
+  }
+
+  li > * {
+  }
+
+  li > .page-number {
+    border: 1px solid var(--wp--preset--color--border-color);
+    display: grid;
+    place-items: center;
+  }
+
+}
+
+.prev,
+.page-numbers,
+.next {
+  text-decoration: none;
+}

@@ -1,0 +1,24 @@
+<li id="li-comment-{{ comment.ID }}">
+    <div class="comment-inner">
+        <div class="comment-inner-item-avatar-wrapper">
+            <img class="avatar"
+                 height="64"
+                 width="64"
+                 src="{{ comment.avatar() }}"
+                 alt="{{ comment.author.name }}のアバター画像" />
+        </div>
+        <div class="comment-by-item">
+            <div class="comment-name">{{ comment.author.name }}</div>
+            <div class="comment-date">{{ comment.date }} @ {{ comment.time }}</div>
+        </div>
+        <div class="comment-reply-link-wrapper">{{ comment.reply_link("返信") }}</div>
+        <div class="comment-block">{{ comment.content }}</div>
+    </div>
+    {% if comment.children %}
+        <ol class="comment-list replies">
+            {% for child_comment in comment.children %}
+                {% include 'comment.twig' with { comment:child_comment } %}
+            {% endfor %}
+        </ol>
+    {% endif %}
+</li>

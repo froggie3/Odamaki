@@ -1,0 +1,54 @@
+{% extends "base.twig" %}
+{% block content %}
+    {% include('header.twig') %}
+    <main id="content" class="odamaki-content-container">
+        <div class="{{ post.post_class }}">
+            <details id="ez-toc-container">
+                <summary class="ez-toc-title">目次</summary>
+            </details>
+            <div class="content-above">
+                <div class="content-above-item">
+                    <img height="630"
+                         width="1200"
+                         src="{{ post.thumbnail.src ?: theme.link ~ '/files/img/empty-thumbnail.png' }}"
+                         alt="{{ post.title }}" />
+                </div>
+                <div class="content-above-item">
+                    <h1 class="post-title">{{ post.title }}</h1>
+                </div>
+                <div class="content-above-item">
+                    <ul class="post-metadata">
+                        {% include('post_metadata.twig') %}
+                        {% block categories_tags %}{% endblock %}
+                    </ul>
+                </div>
+            </div>
+            <section class="content-rules">
+                {{ post.content }}
+            </section>
+            {% block adjecent_post_link %}{% endblock %}
+            <div id="comments" class="comments-area">
+                <div class="comments-header">
+                    <h2 class="comments-title">コメント</h2>
+                    <div class="comments-number">{{ post.comments|length }}</div>
+                </div>
+                {% if post.comment_count() %}
+                    <ol class="comment-list">
+                        {% for comment in post.comments() %}
+                            {% include('comment.twig') %}
+                        {% endfor %}
+                    </ol>
+                {% else %}
+                    <p>コメントはありません。</p>
+                {% endif %}
+                {{ post.comment_form() }}
+            </div>
+            {% block related %}
+            {% endblock related %}
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {% include("footer.twig") %}
+    {{ parent() }}
+{% endblock %}

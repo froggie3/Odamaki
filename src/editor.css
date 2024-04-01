@@ -1,0 +1,77 @@
+mark {
+  background: ease-out-gradient(
+      0deg,
+      var(--wp--preset--color--yellow),
+      var(--wp--preset--color--yellow)
+    )
+    no-repeat;
+  background-size: 100% 33%;
+  background-position: bottom;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--wp--preset--color--black);
+  font: bold 1.2em / 2;
+}
+
+h2 {
+  border-bottom: 1px solid var(--wp--preset--color--red);
+  padding: 0.5rem 0;
+}
+
+h3 {
+  border-left: 2px solid var(--wp--preset--color--blue);
+  padding: 0.25rem 0.75rem;
+}
+
+/**
+ * Table layout
+ */
+
+figure table {
+  font-family: var(--wp--preset--font-family--sans-serif);
+
+  th {
+    padding-top: 0.85em;
+    padding-bottom: 0.85em;
+  }
+
+  thead {
+    background-color: var(--wp--preset--color--blue);
+    color: #eee;
+    border: none;
+  }
+
+  tbody {
+    tr {
+      border-style: solid;
+      border-width: 0 0 1px 0;
+      border-color: #eee;
+    }
+  }
+
+  td,
+  th {
+    border: none;
+    line-height: var(--theme-common-line-height);
+    padding-bottom: 0.85em;
+    padding-top: 0.85em;
+  }
+}
+
+ul,
+ol {
+  padding: revert;
+}
+li {
+  list-style: revert;
+}

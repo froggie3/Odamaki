@@ -1,0 +1,8 @@
+{% extends "singular.twig" %}
+{% block content %}
+    {{ include('partial/cover.twig', {
+        header: site.get_title,
+        content: site.get_description,
+        classes: ''
+    }) }}
+{% endblock %}

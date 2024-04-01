@@ -1,0 +1,8 @@
+<div class="odamaki-copyright-item odamaki-footer-menu-item-copyright-name">&copy; {{ now|date("Y") }} Yokkin</div>
+<ul class="odamaki-copyright-item odamaki-copyright-menu">
+    {% for item in secondary_menu.items %}
+        <li class="odamaki-copyright-menu-item {{ item.classes | join(" ") }}">
+            <a class="odamaki-copyright-menu-item-link" href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>{{ item.title }}</a>
+        </li>
+    {% endfor %}
+</ul>

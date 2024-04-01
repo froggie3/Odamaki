@@ -1,0 +1,41 @@
+:root {
+    --large-viewport-width: 1024px;
+    --theme-width-full: 100%;
+    --theme-common-border-radius: 4px;
+    --theme-common-space-2rem: 2rem;
+    --theme-common-line-height: 1.75;
+    --theme-common-transition-duration: 0.25s;
+    --theme-button-transition: background-color
+            var(--theme-common-transition-duration) ease-out,
+        border-color var(--theme-common-transition-duration) ease-out,
+        color var(--theme-common-transition-duration) ease-out,
+        fill var(--theme-common-transition-duration) ease-out;
+    --grid-column-size: 350px;
+
+    --defined-z-index-layer-1: 1;
+    --defined-z-index-layer-2: 10;
+    --defined-z-index-layer-3: 100;
+
+    /* add 10% of brightness on hovered */
+}
+
+/* Always loaded */
+@import url("../node_modules/ress/dist/ress.min.css");
+@import url("./style.css");
+@import url("./transition.css");
+@import url("./header.css");
+@import url("./nav.css");
+@import url("./pager.css");
+
+/* Front page */
+@import url("./front.css");
+
+/* Blog homepage */
+@import url("./home.css");
+
+/* Posts */
+@import url("./toc.css");
+@import url("./content.css");
+@import url("./comment.css");
+
+@import url("./footer.css");

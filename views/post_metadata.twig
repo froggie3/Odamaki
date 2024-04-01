@@ -1,0 +1,20 @@
+<li class="post-metadata-item">
+    <div class="dashicons dashicons-edit-large"></div>
+    <div>執筆 {{ post.date }}</div>
+</li>
+<li class="post-metadata-item">
+    <div class="dashicons dashicons-update"></div>
+    <div>改稿 {{ post.modified_date }}</div>
+</li>
+<li class="post-metadata-item">
+    {% set characters = post.post_content|character_count %}
+    <div class="dashicons dashicons-book"></div>
+    <div>文字数 {{ characters }}文字</div>
+</li>
+<li class="post-metadata-item">
+    <div class="dashicons dashicons-clock"></div>
+    <div>
+        読書時間
+        {{ characters|reading_time }}
+    </div>
+</li>

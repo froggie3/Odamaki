@@ -1,0 +1,9 @@
+{% extends 'base/term_base.twig' %}
+{% block archive_title %}{{ search_query }}{% endblock %}
+{% block archive_description %}
+    {% if post|length > 0 %}
+        <p>このサイトには、{{ posts|length }}件の{{ search_query }}に関する記事があります。</p>
+    {% else %}
+        <p>指定された検索ワードでサイト内の検索を試行しましたが、該当する記事はありませんでした。</p>
+    {% endif %}
+{% endblock %}

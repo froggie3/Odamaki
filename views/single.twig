@@ -1,0 +1,49 @@
+{% extends "singular.twig" %}
+{% block categories_tags %}
+    {% if post.terms('category') %}
+        <li class="post-metadata-item">
+            <div class="dashicons dashicons-category"></div>
+            <div>
+                分類
+                {{ post.terms({
+                    "taxonomy": "category"
+                }) |
+                map( category =>
+                '<a href="' ~ category.link ~ '">' ~ category.name ~ '</a>') | join(', ') }}
+            </div>
+        </li>
+    {% endif %}
+    {% if post.tags %}
+        <ul class="post-metadata-item post-tags-list-container">
+            <div class="dashicons dashicons-tag"></div>
+            <div>タグ</div>
+            <ul class="post-tags-list">
+                {% for tag in post.tags %}
+                    <li class="tags-list-item">
+                        <a href="{{ tag.link }}">{{ tag.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </ul>
+    {% endif %}
+{% endblock %}
+{% block related %}
+    {% if related_posts is not empty %}
+        <div class="content-above">
+            <h2 class="content-title">関連投稿</h2>
+            <div class="entries odamaki-entries">
+                {% for post in related_posts %}
+                    {% include 'tease-post.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block adjecent_post_link %}
+    {% if post.prev %}
+        {% include('partial/adjecent_prev.twig') %}
+    {% endif %}
+    {% if post.next %}
+        {% include('partial/adjecent_next.twig') %}
+    {% endif %}
+{% endblock %}
