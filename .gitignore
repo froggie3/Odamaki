@@ -1,6 +1,5 @@
 dist/
 vendor/
 node_modules/
-composer.json
-package.json
 .build/
+.venv/

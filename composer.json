@@ -1,0 +1,6 @@
+{
+    "require": {
+        "php": "^8.2",
+        "timber/timber": "^2.5.1"
+    }
+}

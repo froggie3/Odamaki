@@ -1,0 +1,11 @@
+[project]
+name = "odamaki-tools"
+version = "1.0.3"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["djlint==1.46.6"]
+
+[tool.uv]
+package = false

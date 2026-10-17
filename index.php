@@ -28,6 +28,7 @@ if (is_front_page()) {
     array_unshift($templates, 'term.twig');
 } elseif (is_search()) {
     $context['search_query'] = get_search_query();
+    $context['post'] = Timber::get_posts();
     array_unshift($templates, 'search.twig');
 } elseif (is_archive()) {
     // Get a term when on a term archive page
